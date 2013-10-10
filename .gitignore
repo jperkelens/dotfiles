@@ -4,4 +4,6 @@
 !.bashrc
 !.profile
 !.gitconfig
-!.emacs.d
+!.emacs.d/
+!.emacs.d/*
+!.emacs.d/*/*
