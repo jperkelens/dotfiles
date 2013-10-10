@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.tmux.conf
+!.bashrc
+!.profile
+!.gitconfig
+!.emacs.d
