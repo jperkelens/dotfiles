@@ -8,18 +8,9 @@
   "Perform a bunch of operations on the whitespace content of a buffer.
 Including indent-buffer, which should not be called automatically on save."
   (interactive)
-  (untabify-buffer)
-  (whitespace-cleanup)
-  (indent-buffer))
-
-(defun indent-buffer ()
-  (interactive)
-  (indent-region (point-min) (point-max)))
+  (delete-trailing-whitespace)
+  (untabify-buffer))
 
 (defun untabify-buffer ()
   (interactive)
   (untabify (point-min) (point-max)))
-
-
-
-
