@@ -1,6 +1,6 @@
 (global-set-key (kbd "C-x C-s") 'clean-and-save-buffer)
 (global-set-key (kbd "C-' C-b") 'ibuffer)
-(global-set-key (kbd "C-' C-f") 'find-file-in-project)
+(global-set-key (kbd "C-' C-f") 'fiplr-find-file)
 (global-set-key (kbd "C-' C-g") 'magit-status)
 (global-set-key (kbd "C-' C-a") 'ack-and-a-half)
 (global-set-key (kbd "C-' C-s") 'ag-project)
