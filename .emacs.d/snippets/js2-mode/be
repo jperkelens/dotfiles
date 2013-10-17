@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: be
+# key: be
+# --
+beforeEach(function(done) {
+  $0
+  done()
+})	   	       

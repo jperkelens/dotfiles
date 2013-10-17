@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: app
+# key: app
+# binding: C-q a
+# --
+$(function() {
+  "use strict";
+
+  $0
+  
+})
