@@ -1,5 +1,6 @@
 (defun init--install-packages ()
   (packages-install
+   (cons 'cl-lib gnu)
    (cons 'ace-jump-mode melpa)
    (cons 'ack-and-a-half melpa)
    (cons 'ag melpa)
