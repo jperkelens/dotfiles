@@ -15,7 +15,7 @@ alias h='history'
 # Set git autocompletion and PS1 integration
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
   . /usr/local/etc/bash_completion.d/git-completion.bash
-  export PS1='\[$(tput sgr0)$(tput setaf 5)\]\w\[$(tput sgr0)$(tput setaf 2)\] $(__git_ps1 "[%s]") \n\[$(tput setaf 3)\]\u@\h \[$(tput sgr0)\]=> '
+  #export PS1='\[$(tput sgr0)$(tput setaf 5)\]\w\[$(tput sgr0)$(tput setaf 2)\] $(__git_ps1 "[%s]") \n\[$(tput setaf 3)\]\u@\h \[$(tput sgr0)\]=> '
 fi
 
 GIT_PS1_SHOWDIRTYSTATE=true

@@ -2,6 +2,7 @@
 !.gitignore
 !.tmux.conf
 !.bashrc
+!.zshrc
 !.profile
 !.gitconfig
 !.emacs.d/
