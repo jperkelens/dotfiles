@@ -16,9 +16,10 @@
   cob = checkout -b
   datetag = !git tag `date "+%Y%m%d%H%M"`
   done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && git push
-  ir = !git rebase -i origin/master
   lf = !sh -c 'git lg --grep=$1 --max-count=5' -
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  ir = !git rebase -i 
+  irm = !git rebase -i origin/master
   next = "!git add . && git rebase --continue"
   rmb = !sh -c 'git branch -D $1 && git push origin :$1' -
   st = status
