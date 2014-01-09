@@ -4,6 +4,8 @@
   (global-set-key (read-kbd-macro key) (intern (concat key "-map"))))
 
 (prefix-key "C-i")
+(prefix-key "C-q")
+(prefix-key "C-e")
 
 ;; Search
 (global-set-key (kbd "C-c s") 'ag-project)
@@ -21,6 +23,8 @@
 (global-set-key (kbd "C-c i") 'change-inner)
 (global-set-key (kbd "C-c o") 'change-outer)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-q") 'er/expand-region)
+(global-set-key (kbd "C-e") 'er/contract-region)
 
 ;; terminal
 (global-set-key (kbd "C-c t") 'multi-term)
