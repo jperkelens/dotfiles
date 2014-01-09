@@ -2,7 +2,6 @@
   (packages-install
    (cons 'cl-lib gnu)
    (cons 'ace-jump-mode melpa)
-   (cons 'ack-and-a-half melpa)
    (cons 'ag melpa)
    (cons 'change-inner melpa)
    (cons 'clojure-mode melpa)
@@ -17,6 +16,7 @@
    (cons 'js2-mode melpa)
    (cons 'magit melpa)
    (cons 'multiple-cursors melpa)
+   (cons 'multi-term melpa)
    (cons 'paredit melpa)
    (cons 'redo+ melpa)
    (cons 'smartparens melpa)

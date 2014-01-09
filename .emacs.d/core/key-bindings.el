@@ -1,15 +1,38 @@
-(global-set-key (kbd "C-x w") 'clean-and-save-buffer)
-(global-set-key (kbd "C-x b") 'ibuffer)
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x a") 'ack-and-a-half)
-(global-set-key (kbd "C-x s") 'ag-project)
-(global-set-key (kbd "C-x n") (kbd "C-c s"))
-(global-set-key (kbd "C-x l") 'goto-line)
-(global-set-key (kbd "C-x d") 'dash-at-point)
-(global-set-key (kbd "C-u")   'undo)
-(global-set-key (kbd "C-S-u") 'redo)
-(global-set-key (kbd "C-x i") 'change-inner)
-(global-set-key (kbd "C-x o") 'change-outer)
+(defun prefix-key (key)
+  (global-unset-key (read-kbd-macro key))
+  (define-prefix-command (intern (concat key "-map")))
+  (global-set-key (read-kbd-macro key) (intern (concat key "-map"))))
+
+(prefix-key "C-i")
+
+;; Search
+(global-set-key (kbd "C-c s") 'ag-project)
+(global-set-key (kbd "C-c S") 'isearch-forward)
+(global-set-key (kbd "C-c f") 'fiplr-find-file)
+(global-set-key (kbd "C-c F") 'find-file)
+
+;; buffers
+(global-set-key (kbd "C-c w") 'clean-and-save-buffer)
+(global-set-key (kbd "C-c b") 'ibuffer)
+
+;; editing
+(global-set-key (kbd "C-u") 'undo)
+(global-set-key (kbd "C-i") 'redo)
+(global-set-key (kbd "C-c i") 'change-inner)
+(global-set-key (kbd "C-c o") 'change-outer)
+
+;; movement
+(global-set-key (kbd "C-c l") 'goto-line-with-feedback)
+(global-set-key [remap goto-line] 'goto-line-with-feedback)
+
+;; git
+(global-set-key (kbd "C-c g") 'magit-status)
+
+;; project drawer
+(global-set-key (kbd "C-c n") (kbd "C-c s"))
+
+;; docs
+(global-set-key (kbd "C-c d") 'dash-at-point)
+
 
 (provide 'key-bindings)
