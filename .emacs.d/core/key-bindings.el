@@ -20,6 +20,7 @@
 (global-set-key (kbd "C-i") 'redo)
 (global-set-key (kbd "C-c i") 'change-inner)
 (global-set-key (kbd "C-c o") 'change-outer)
+(global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 
 ;; terminal
 (global-set-key (kbd "C-c t") 'multi-term)
