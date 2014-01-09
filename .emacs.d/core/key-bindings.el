@@ -21,6 +21,10 @@
 (global-set-key (kbd "C-c i") 'change-inner)
 (global-set-key (kbd "C-c o") 'change-outer)
 
+;; terminal
+(global-set-key (kbd "C-c t") 'multi-term)
+(global-set-key (kbd "C-c T") 'multi-term-next)
+
 ;; movement
 (global-set-key (kbd "C-c l") 'goto-line-with-feedback)
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
