@@ -5,17 +5,18 @@
 
 (prefix-key "C-i")
 (prefix-key "C-q")
-(prefix-key "C-e")
 
 ;; Search
 (global-set-key (kbd "C-c s") 'ag-project)
 (global-set-key (kbd "C-c S") 'isearch-forward)
 (global-set-key (kbd "C-c f") 'fiplr-find-file)
 (global-set-key (kbd "C-c F") 'find-file)
+(global-set-key (kbd "C-c -") 'fiplr-clear-cache)
 
 ;; buffers
 (global-set-key (kbd "C-c w") 'clean-and-save-buffer)
 (global-set-key (kbd "C-c b") 'ibuffer)
+(global-set-key (kbd "C-c C-c") 'switch-to-previous-buffer)
 
 ;; editing
 (global-set-key (kbd "C-u") 'undo)
@@ -24,7 +25,6 @@
 (global-set-key (kbd "C-c o") 'change-outer)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-q") 'er/expand-region)
-(global-set-key (kbd "C-e") 'er/contract-region)
 
 ;; terminal
 (global-set-key (kbd "C-c t") 'multi-term)
