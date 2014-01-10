@@ -27,16 +27,15 @@
 
 (setq exec-path (append exec-path '("/usr/local/bin/")))
 
-
-;; Load functions
-(dolist (file (directory-files defuns-dir t "\\w+"))
-  (when (file-regular-p file) (load file)))
-
 ;; Setup and install packages
 (require 'setup-package-repo)
 (require 'install-packages)
 (require 'sane-defaults)
 (require 'key-bindings)
+
+;; Load functions
+(dolist (file (directory-files defuns-dir t "\\w+"))
+  (when (file-regular-p file) (load file)))
 
 ;; load modules
 (dolist (file (directory-files modules-dir t "\\w+"))

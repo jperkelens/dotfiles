@@ -19,10 +19,10 @@
 
 ;; windows
 (global-set-key (kbd "C-c C-o") 'switch-window)
-(global-set-key (kbd "C-c m") 'shrink-window-horizontally)
-(global-set-key (kbd "C-c ,") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-c .") 'shrink-window)
-(global-set-key (kbd "C-c /") 'enlarge-window)
+(global-set-key (kbd "C-c m") (make-repeatable-command 'shrink-window-horizontally))
+(global-set-key (kbd "C-c ,") (make-repeatable-command 'enlarge-window-horizontally))
+(global-set-key (kbd "C-c .") (make-repeatable-command 'shrink-window))
+(global-set-key (kbd "C-c /") (make-repeatable-command 'enlarge-window))
 
 ;; editing
 (global-set-key (kbd "C-u") 'undo)
