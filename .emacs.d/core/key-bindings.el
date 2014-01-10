@@ -3,7 +3,6 @@
   (define-prefix-command (intern (concat key "-map")))
   (global-set-key (read-kbd-macro key) (intern (concat key "-map"))))
 
-(prefix-key "C-i")
 (prefix-key "C-q")
 
 ;; Search
@@ -20,7 +19,6 @@
 
 ;; editing
 (global-set-key (kbd "C-u") 'undo)
-(global-set-key (kbd "C-i") 'redo)
 (global-set-key (kbd "C-c i") 'change-inner)
 (global-set-key (kbd "C-c o") 'change-outer)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
@@ -38,10 +36,9 @@
 (global-set-key (kbd "C-c g") 'magit-status)
 
 ;; project drawer
-(global-set-key (kbd "C-c n") (kbd "C-c s"))
+(global-set-key (kbd "C-c n") 'sr-speedbar-toggle)
 
 ;; docs
 (global-set-key (kbd "C-c d") 'dash-at-point)
-
 
 (provide 'key-bindings)

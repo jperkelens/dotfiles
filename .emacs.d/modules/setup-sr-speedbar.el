@@ -10,6 +10,4 @@
       sr-speedbar-skip-other-window-p t
       sr-speedbar-right-side nil)
 
-(global-set-key (kbd "C-c s") 'sr-speedbar-toggle)
-
 (provide 'setup-sr-speedbar)
