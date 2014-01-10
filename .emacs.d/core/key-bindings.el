@@ -3,7 +3,7 @@
   (define-prefix-command (intern (concat key "-map")))
   (global-set-key (read-kbd-macro key) (intern (concat key "-map"))))
 
-(prefix-key "C-q")
+
 
 ;; Search
 (global-set-key (kbd "C-c s") 'ag-project)
@@ -18,7 +18,7 @@
 (global-set-key (kbd "C-c C-c") 'switch-to-previous-buffer)
 
 ;; windows
-(global-set-key (kbd "C-c C-o") 'switch-window)
+(global-set-key (kbd "C-c o") 'switch-window)
 (global-set-key (kbd "C-c m") (make-repeatable-command 'shrink-window-horizontally))
 (global-set-key (kbd "C-c ,") (make-repeatable-command 'enlarge-window-horizontally))
 (global-set-key (kbd "C-c .") (make-repeatable-command 'shrink-window))
@@ -29,7 +29,9 @@
 (global-set-key (kbd "C-c i") 'change-inner)
 (global-set-key (kbd "C-c C-i") 'change-outer)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-q") 'er/expand-region)
+
+(global-set-key (kbd "C-c C-v") (make-repeatable-command 'er/expand-region))
+(global-set-key (kbd "C-c C-b") (make-repeatable-command 'er/contract-region))
 
 ;; terminal
 (global-set-key (kbd "C-c t") 'multi-term)
