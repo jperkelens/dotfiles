@@ -5,8 +5,6 @@
 
 (prefix-key "C-q")
 
-
-
 ;; Search
 (global-set-key (kbd "C-c s") 'ag-project)
 (global-set-key (kbd "C-c S") 'isearch-forward)
@@ -21,6 +19,10 @@
 
 ;; windows
 (global-set-key (kbd "C-c C-o") 'switch-window)
+(global-set-key (kbd "C-c m") 'shrink-window-horizontally)
+(global-set-key (kbd "C-c ,") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-c .") 'shrink-window)
+(global-set-key (kbd "C-c /") 'enlarge-window)
 
 ;; editing
 (global-set-key (kbd "C-u") 'undo)
