@@ -5,6 +5,8 @@
 
 (prefix-key "C-q")
 
+
+
 ;; Search
 (global-set-key (kbd "C-c s") 'ag-project)
 (global-set-key (kbd "C-c S") 'isearch-forward)
@@ -17,10 +19,13 @@
 (global-set-key (kbd "C-c b") 'ibuffer)
 (global-set-key (kbd "C-c C-c") 'switch-to-previous-buffer)
 
+;; windows
+(global-set-key (kbd "C-c C-o") 'switch-window)
+
 ;; editing
 (global-set-key (kbd "C-u") 'undo)
 (global-set-key (kbd "C-c i") 'change-inner)
-(global-set-key (kbd "C-c o") 'change-outer)
+(global-set-key (kbd "C-c C-i") 'change-outer)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-q") 'er/expand-region)
 
