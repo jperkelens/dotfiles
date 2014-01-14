@@ -3,8 +3,6 @@
   (define-prefix-command (intern (concat key "-map")))
   (global-set-key (read-kbd-macro key) (intern (concat key "-map"))))
 
-
-
 ;; Search
 (global-set-key (kbd "C-c s") 'ag-project)
 (global-set-key (kbd "C-c S") 'isearch-forward)
@@ -25,13 +23,14 @@
 (global-set-key (kbd "C-c /") (make-repeatable-command 'enlarge-window))
 
 ;; editing
-(global-set-key (kbd "C-u") 'undo)
+(global-set-key (kbd "C-c C-u") (make-repeatable-command 'undo))
+(global-set-key (kbd "C-c C-r") (make-repeatable-command 'redo))
 (global-set-key (kbd "C-c i") 'change-inner)
 (global-set-key (kbd "C-c C-i") 'change-outer)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region)
 
-(global-set-key (kbd "C-c C-v") (make-repeatable-command 'er/expand-region))
-(global-set-key (kbd "C-c C-b") (make-repeatable-command 'er/contract-region))
+(global-set-key (kbd "C-c [") (make-repeatable-command 'er/expand-region))
+(global-set-key (kbd "C-c ]") (make-repeatable-command 'er/contract-region))
 
 ;; terminal
 (global-set-key (kbd "C-c t") 'multi-term)

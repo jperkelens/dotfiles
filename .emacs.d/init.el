@@ -36,12 +36,12 @@
 (require 'setup-package-repo)
 (require 'install-packages)
 (require 'sane-defaults)
-(require 'key-bindings)
 
 ;; load modules
 (dolist (file (directory-files modules-dir t "\\w+"))
   (require (intern (file-name-from-path-no-ext file))))
 
+(require 'key-bindings)
 ;; turn off autosave/backup
 (setq make-backup-files nil)
 (setq auto-save-list-file-name nil)
