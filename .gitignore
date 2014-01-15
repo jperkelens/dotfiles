@@ -4,6 +4,8 @@
 !.bashrc
 !.zshrc
 !.zpreztorc
+!.zprezto/runcoms/zpreztorc
+!.zprezto/runcoms/zshrc
 !.profile
 !.gitconfig
 !.emacs.d/
