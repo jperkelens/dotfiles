@@ -29,7 +29,7 @@
   who = shortlog -n -s --no-merges
 
   pl = !git branch --merged master | grep -v 'master$' | xargs git branch -d
-  pr = !git prune remote origin
+  pr = !git remote prune origin
 
 [push]
   default = current
