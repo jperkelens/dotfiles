@@ -7,6 +7,7 @@
    (cons 'clojure-mode melpa)
    (cons 'clojure-snippets melpa)
    (cons 'clojure-test-mode melpa)
+   (cons 'coffee-mode melpa)
    (cons 'color-theme-sanityinc-tomorrow melpa)
    (cons 'dash-at-point melpa)
    (cons 'expand-region melpa)
