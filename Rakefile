@@ -39,8 +39,8 @@ end
 task :prezto do
   puts "Installing prezto"
   unless File.exists?(File.join(ENV['HOME'], '.zprezto'))
-    system %{ ln -s prezto ~/.zprezto  }
-    Dir.glob('prezto/runcoms/z*').each do |f|
+    FileUtils.ln_s File.expand_path('./prezto'), File.expand_path('~/.zprezto')
+    Dir.glob('./prezto/runcoms/z*').each do |f|
       file_name = f.split('/').last
       puts "Symlink " + f  + " "  + file_name
       system %{ ln -s  #{File.expand_path(f)} ~/.#{file_name} }
