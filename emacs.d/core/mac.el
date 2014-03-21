@@ -8,6 +8,12 @@
 
 (set-face-attribute 'default nil :family "M+ 1m" :height 160 :weight 'light)
 
+;; Set emacs client
+(set-variable 'magit-emacsclient-executable "/usr/local/Cellar/emacs/24.3/bin/emacsclient")
+
+;; Set server socket directory for connecting to emacs daemon
+;;(setq server-socket-dir (format "/tmp/emacs%d" (user-uid)))
+
 ;; move to trash when deleting
 (setq delete-by-moving-to-trash t
       trash-directory "~/.Trash/emacs")

@@ -12,6 +12,6 @@
  )
 
 ;;Load my favorite theme
-(load-theme 'sanityinc-tomorrow-eighties)
+(load-theme 'sanityinc-tomorrow-bright)
 
 (provide 'setup-tomorrow-theme)
