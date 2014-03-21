@@ -36,6 +36,16 @@ task :configure_emacs => ['emacs'] do
   end
 end
 
+ZSHRC = <<END
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+autoload -Uz promptinit
+promptinit
+prompt steeef
+END
+
 task :prezto do
   puts "Installing prezto"
   unless File.exists?(File.join(ENV['HOME'], '.zprezto'))
@@ -44,6 +54,9 @@ task :prezto do
       file_name = f.split('/').last
       puts "Symlink " + f  + " "  + file_name
       system %{ ln -s  #{File.expand_path(f)} ~/.#{file_name} }
+    end
+    open File.expand_path('~/.zshrc'), 'a' do |f|
+      f.puts ZSHRC
     end
   end
 end
