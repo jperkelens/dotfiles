@@ -25,6 +25,14 @@ file 'tmux' do
   end
 end
 
+file 'git' do
+  puts 'Checking for existance of git'
+  unless system %{ git --version }
+    puts("You have to install git first")
+    fail
+  end
+end
+
 task :configure_emacs => ['emacs'] do
   puts "Installing Emacs config"
   unless File.exists?(File.join(ENV['HOME'], '.emacs.d'))
@@ -69,5 +77,13 @@ task :configure_tmux => ['tmux'] do
   else
     puts "tmux config already exists, so... i'll just leave it alone"
   end
+end
 
+task :configure_git => ['git'] do
+  puts "configuring git"
+  unless File.exists? File.join(ENV['HOME'], '.prezto')
+    FileUtils.ln_s File.expand_path('./git/gitconfig'), File.expand_path('~/.gitconfig')
+  else
+    puts "no way man, you've already got a git config"
+  end
 end
