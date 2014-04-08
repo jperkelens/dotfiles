@@ -4,6 +4,7 @@
    (cons 'ace-jump-mode melpa)
    (cons 'ag melpa)
    (cons 'change-inner melpa)
+   (cons 'cider melpa)
    (cons 'clojure-mode melpa)
    (cons 'clojure-snippets melpa)
    (cons 'clojure-test-mode melpa)
