@@ -87,3 +87,14 @@ task :configure_git => ['git'] do
     puts "no way man, you've already got a git config"
   end
 end
+
+task :configure_lein  do
+  unless File.exists?(File.join(ENV['HOME'], '.lein/profiles.clj'))
+    source = "#{ENV['PWD']}/lein/profiles.clj"
+    puts "symlink #{source}"
+    system %{ ln -s #{source} ~/.lein/profiles.clj}
+  else
+    puts "profiles.clj already exists, so... you're on your own buddy"
+  end
+
+end
