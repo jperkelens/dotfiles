@@ -19,6 +19,7 @@
    (cons 'magit melpa)
    (cons 'multiple-cursors melpa)
    (cons 'multi-term melpa)
+   (cons 'org-pomodoro melpa)
    (cons 'paredit melpa)
    (cons 'rainbow-delimiters melpa)
    (cons 'redo+ melpa)
