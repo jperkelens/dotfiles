@@ -1,4 +1,4 @@
-
+/emacs.d/ac
 
 # Numerous always-ignore extensions
 *.diff
@@ -11,7 +11,8 @@
 *.vi
 *~
 *.sass-cache
- 
+*.org
+
 # OS or Editor folders
 .DS_Store
 Thumbs.db
@@ -20,4 +21,3 @@ Thumbs.db
 .settings
 .tmproj
 *.esproj
- 

@@ -50,4 +50,7 @@
 ;; docs
 (global-set-key (kbd "C-c d") 'dash-at-point)
 
+;; org-pomodoro
+(global-set-key (kbd "C-c p") 'org-pomodoro)
+
 (provide 'key-bindings)
