@@ -1,4 +1,6 @@
-/emacs.d/ac
+
+/emacs.d/ac*
+/emacs.d/.org*
 
 # Numerous always-ignore extensions
 *.diff
