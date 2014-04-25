@@ -7,6 +7,7 @@
          ("js" (mode . js2-mode))
          ("web" (or (mode . jade-mode)
                     (mode . sws-mode)))
+         ("clj" (mode . clojure-mode))
          ("org" (or (mode . org-mode)
                     (filename . "OrgMode")))
          ("dired" (mode . dired-mode))
