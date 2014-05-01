@@ -12,6 +12,7 @@
                     (filename . "OrgMode")))
          ("dired" (mode . dired-mode))
          ("magit" (name . "\*magit"))
+         ("term" (name . "terminal"))
          ("emacs" (or
                    (name . "^\\*scratch\\*$")
                    (name . "^\\*Messages\\*$")))
