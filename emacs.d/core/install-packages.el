@@ -12,6 +12,7 @@
    (cons 'coffee-mode melpa)
    (cons 'color-theme-sanityinc-tomorrow melpa)
    (cons 'dash-at-point melpa)
+   (cons 'discover melpa)
    (cons 'expand-region melpa)
    (cons 'fiplr melpa)
    (cons 'icicles melpa)
