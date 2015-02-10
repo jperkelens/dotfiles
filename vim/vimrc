@@ -38,10 +38,14 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'jelera/vim-javascript-syntax'
 " Date formatting
 Plugin 'tpope/vim-speeddating'
+" Multiple Cursors
+Plugin 'terryma/vim-multiple-cursors'
 " Stylus
 Plugin 'wavded/vim-stylus'
 " Less
 Plugin 'tpope/vim-surround'
+" Git Integration
+Plugin 'tpope/vim-fugitive'
 " File finding
 Plugin 'rphillips/fuzzyfinder'
 " Command-T
