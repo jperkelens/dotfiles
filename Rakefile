@@ -88,6 +88,15 @@ task :configure_git => ['git'] do
   end
 end
 
+task :configure_vim do
+  puts "configuring vim"
+  unless File.exists? File.join(ENV['HOME'], '.vimrc')
+    FileUtils.ln_s File.expand_path('./vim/vimrc'), File.expand_path('~/.vimrc')
+  else
+    puts "Not a chance. That file is already there"
+  end
+end
+
 task :configure_lein  do
   unless File.exists?(File.join(ENV['HOME'], '.lein/profiles.clj'))
     source = "#{ENV['PWD']}/lein/profiles.clj"
