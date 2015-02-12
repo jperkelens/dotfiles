@@ -35,8 +35,6 @@ Plugin 'digitaltoad/vim-jade'
 " Js
 "Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'nathanaelkane/vim-indent-guides'
 " Date formatting
 Plugin 'tpope/vim-speeddating'
 " Multiple Cursors
@@ -55,10 +53,8 @@ Plugin 'wincent/Command-T'
 Plugin 'mbbill/undotree'
 " Code Searching
 Plugin 'mileszs/ack.vim'
-" Bracket and Quote matching
+" Paren Bracket and Quote matching
 Plugin 'Raimondi/delimitMate'
-" Code linting
-Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 "filetype plugin indent on
@@ -72,9 +68,6 @@ set history=700
 
 " Enable filetype plugins
 filetype plugin indent on
-
-" No blinky cursors
-set guicursor=a:blinkon0
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -106,7 +99,10 @@ endif
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set nosol
+set so=7
+
+" No blinky cursors
+set guicursor=a:blinkon0
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en_US.UTF-8'
@@ -129,7 +125,6 @@ set wildignore+=**/node_modules/*,**/bower_components/*
 set wildignore+=*.log,*.sock,**/lib-conv/**
 set wildignore+=*.png,*.gif,*.jpg,*.jpeg,*.class,nohup.out,*.swp
 set wildignore+=*.tmproj,*.pid,**/tmp/*
-
 
 "Always show current position
 set ruler
@@ -178,14 +173,20 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Add a bit extra margin to the left
-set foldcolumn=1
+" Don't Add a bit extra margin to the left
+set foldcolumn=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
+
+if has("gui_running")
+  colorscheme twilight "jellybeans distinguished
+else
+  colorscheme twilight256
+endif
 
 set guifont=InputMonoCompressed\ Thin:h18
 
@@ -200,25 +201,19 @@ if has("gui_running")
     set guioptions-=l
     set guioptions-=L
     set guioptions-=R
-    set lines=100
-    set columns=185
     if has("gui_macvim")
-      set fuoptions=maxvert,maxhorz
       set fu
     endif
 endif
 
 set guioptions-=r
 
-" Highlight long lines
-"au BufWinEnter *.js,*.jade,*.css,*.clj let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
-"au BufWinEnter *.js,*.jade,*.css,*.clj let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,mac,dos
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -248,7 +243,6 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set nowrap "Don't Wrap lines
-
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -310,13 +304,9 @@ set laststatus=2
 set statusline=\ %{HasPaste()}%f%m%r%h
 set statusline+=\ %y\ %w 
 set statusline+=%{fugitive#statusline()}
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 set statusline+=%=
 set statusline+=\ Line:%l/%L\ (%p%%)
-
-
+ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -348,7 +338,10 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
+
 autocmd BufWrite *.py,*.coffee,*.js :call DeleteTrailingWS()
+
+" Add semicolon to blank returns statement
 autocmd BufWrite *.js :%s/return$/return;/e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -398,8 +391,8 @@ map <leader>s? z=
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Edit vimrc
-nnoremap <Leader>ve <C-w><C-v><C-l>:e ~/.vimrc<cr>
-map <Leader>vs :so ~/.vimrc<cr>
+nnoremap <Leader>ev <C-w><C-v><C-l>:e ~/.vimrc<cr>
+map <Leader>sv :so ~/.vimrc<cr>
 
 " Toggle search
 map <Leader>h :set invhls<cr>
@@ -418,6 +411,8 @@ map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -479,7 +474,10 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" NERDTree *****************************************************************
+" Don't show the tab line
+set showtabline=0
+
+" NERDTree ********************************************************************
 " User instead of Netrw when doing an edit /foobar
 let NERDTreeHijackNetrw=1
 
@@ -494,52 +492,38 @@ let NERDTreeQuitOnOpen=1
 
 noremap <Leader>n :NERDTreeToggle <cr>
 
-" Vim Surround *************************************************************
-nmap <Leader>as ysiw
-
-" bufexplorer **************************************************************
+" bufexplorer *****************************************************************
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowDirectories=0
 let g:bufExplorerShowRelativePath=1
 
-" easymotion ***************************************************************
+" easymotion ******************************************************************
 "let g:EasyMotion_leader_key = '<Leader> em'
 map <Leader><Leader> <Plug>(easymotion-prefix)
 
-" UndoTree *****************************************************************
+" UndoTree ********************************************************************
 map <Leader>r :UndotreeToggle <cr>
 
-" fuzzyfinder **************************************************************
+" fuzzyfinder *****************************************************************
 " limit number of rksults shown for performance
 let g:fuzzy_matching_limit=60
 
 " ignore stuff that can't be openned, and generated files
-let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;"
-let g:fuzzy_ignore += "vendor/**;coverage/**;tmp/**;rdoc/**"
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 
 " increate the number of files scanned for very large projects
 let g:fuzzy_ceiling=20000
 
-" supertab *****************************************************************
+" supertab ********************************************************************
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabMappingForward = '<S-Space>'
 
-" delimitMate **************************************************************
-" line splitter 
+" DelimitMate ********************************************************
+" Open a new line between braces
 imap <C-r> <CR><Esc>O
 
-" Syntastic ****************************************************************
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+" Vimsurround ********************************************************
+nmap <Leader>as ysiw
 
-" Don't show the tab line
-set showtabline=0
-
-if has("gui_running")
-  colorscheme twilight "jellybeans distinguished
-else
-  colorscheme twilight256
-endif
 
