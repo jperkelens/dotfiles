@@ -13,8 +13,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bufexplorer.zip'
 " Switch to last buffer
 Plugin 'bufmru.vim'
-" Motion through camelcase and _ notation
-Plugin 'camelcasemotion'
 " um, JQuery
 Plugin 'jQuery'
 " Fuzzy matching
@@ -213,8 +211,8 @@ endif
 set guioptions-=r
 
 " Highlight long lines
-au BufWinEnter *.js,*.jade,*.css,*.clj let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
-au BufWinEnter *.js,*.jade,*.css,*.clj let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"au BufWinEnter *.js,*.jade,*.css,*.clj let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+"au BufWinEnter *.js,*.jade,*.css,*.clj let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -420,7 +418,6 @@ map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
