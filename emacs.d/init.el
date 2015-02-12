@@ -13,7 +13,7 @@
 (setq defuns-dir (concat user-emacs-directory "defuns"))
 (setq elpa-dir (concat user-emacs-directory "elpa"))
 (setq modules-dir (concat user-emacs-directory "modules"))
-(add-to-list 'load-path (concat user-emacs-directory "core"))
+(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path core-dir)
 (add-to-list 'load-path defuns-dir)
 (add-to-list 'load-path modules-dir)
