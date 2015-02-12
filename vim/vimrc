@@ -375,6 +375,8 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
+map <Leader>h :set invhls<CR>
+noremap <Leader>i :set list!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -493,7 +495,7 @@ let NERDTreeQuitOnOpen=1
 noremap <Leader>n :NERDTreeToggle <cr>
 
 " bufexplorer *****************************************************************
-let g:bufExplorerDefaultHelp=0
+let g:bufExplorerDefaultHelp=1
 let g:bufExplorerShowDirectories=0
 let g:bufExplorerShowRelativePath=1
 
@@ -532,4 +534,17 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 nmap <Leader>l :SyntasticReset <cr> 
+
+" Command-T ******************************************************
+let g:CommandTMaxFiles=10000
+noremap <Leader>t :CommandTFlush<cr>\|:CommandT<cr>
+
+" Fugitive ***********************************************************************
+noremap <Leader>gs :Gstatus<cr>
+noremap <Leader>gd :Gvdiff<cr>
+noremap <Leader>g<S-k> :Gread<cr>
+noremap <Leader>g<S-u> :Gwrite<cr>
+noremap <Leader>gk :diffget<cr>
+noremap <Leader>gu :diffput<cr>
+noremap <Leader>gc :Gcommit<cr>
 
