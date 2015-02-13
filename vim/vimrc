@@ -525,7 +525,14 @@ let g:SuperTabMappingForward = '<S-Space>'
 imap <C-r> <CR><Esc>O
 
 " Vimsurround ********************************************************
-nmap <Leader>as ysiw
+map      <leader>' ysiw'
+map      <leader>" ysiw"
+map      <leader>( ysiw)
+map      <leader>) ysiw(
+map      <leader>[ ysiw]
+map      <leader>] ysiw[
+map      <leader>{ ysiw}
+map      <leader>} ysiw{
 
 " Syntastic ****************************************************************
 let g:syntastic_always_populate_loc_list = 1
