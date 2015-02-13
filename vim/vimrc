@@ -21,11 +21,6 @@ Plugin 'matchit.zip'
 Plugin 'scrooloose/nerdcommenter'
 " Project folder
 Plugin 'scrooloose/nerdtree'
-" Code snipets
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 " Tab completion
 Plugin 'ervandew/supertab'
 " Easy text motions
@@ -57,6 +52,10 @@ Plugin 'mileszs/ack.vim'
 Plugin 'Raimondi/delimitMate'
 " Code linting
 Plugin 'scrooloose/syntastic'
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 "filetype plugin indent on
@@ -547,4 +546,13 @@ noremap <Leader>g<S-u> :Gwrite<cr>
 noremap <Leader>gk :diffget<cr>
 noremap <Leader>gu :diffput<cr>
 noremap <Leader>gc :Gcommit<cr>
+
+" UltiSnips ****************************************************************
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-b>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 

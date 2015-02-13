@@ -1,0 +1,30 @@
+snippet its
+it("${1:description}", function() {
+	$0
+})
+endsnippet
+
+snippet it
+it("${1:description}", function(done) {
+	$0
+	done()
+})
+endsnippet
+
+snippet de
+describe("${1:description}", function() {
+	it("${2:description}", function(){
+		$0
+	})
+})
+endsnippet
+
+snippet des
+describe("${1:description}", function() {
+	it("${2:description}", function(done){
+		$0
+		done()
+	})
+})
+endsnippet
+
