@@ -184,9 +184,9 @@ set foldcolumn=0
 syntax enable
 
 if has("gui_running")
-  colorscheme twilight "jellybeans distinguished
+  colorscheme gruvbox "twilight jellybeans distinguished
 else
-  colorscheme twilight256
+  colorscheme gruvbox "twilight256
 endif
 
 set guifont=InputMonoCompressed\ Thin:h18
