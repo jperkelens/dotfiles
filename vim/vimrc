@@ -56,6 +56,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+" Code completion
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
 
 call vundle#end()
 "filetype plugin indent on
@@ -478,6 +481,15 @@ endfunction
 " Don't show the tab line
 set showtabline=0
 
+" UltiSnips ****************************************************************
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsJumpForwardTrigger="<C-k>"
+let g:UltiSnipsJumpBackwardTrigger="<C-j>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " NERDTree ********************************************************************
 " User instead of Netrw when doing an edit /foobar
 let NERDTreeHijackNetrw=1
@@ -554,12 +566,4 @@ noremap <Leader>gk :diffget<cr>
 noremap <Leader>gu :diffput<cr>
 noremap <Leader>gc :Gcommit<cr>
 
-" UltiSnips ****************************************************************
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-b>"
-let g:UltiSnipsJumpBackwardTrigger="<C-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
