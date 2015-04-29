@@ -1,27 +1,42 @@
-snippet it "it block"
-it("${1:description}", function(${2:done}) {
-	$0
+snippet it "it block" b
+it("${1:description}", function(done) {
+	${0}
 	done()
 })
 endsnippet
 
-snippet des "describe"
-describe("${1:description}", function() {
-	$0
+snippet its "it sync block" b
+it("${1:description}", function() {
+	${0}
 })
 endsnippet
 
-snippet desit
+
+snippet des "describe" b
 describe("${1:description}", function() {
-	it("${2:description}", function(${3:done}){
-		$0
-		${4:done()}
+	${0}
+})
+endsnippet
+
+snippet desit "Nested it block in describe block" b
+describe("${1:description}", function() {
+	it("${2:description}", function(done) {
+		${0}
+		${3:done()}
 	})
 })
 endsnippet
 
-snippet /* "multiline comment" !b
+snippet /* "multiline comment" b
 /**
- * $1
- */$0
+ * ${1}
+ */
+ ${0}
+endsnippet
+
+snippet be "Before Each Block" b
+beforeEach(function(done) {
+  ${0}
+  done()
+})
 endsnippet
