@@ -2,3 +2,6 @@
 	path = prezto
 	url = git@github.com:sorin-ionescu/prezto.git
   ignore = dirty
+[submodule "vim/bundle/Vundle.vim"]
+	path = vim/bundle/vundle
+	url = http://github.com/gmarik/vundle.git
