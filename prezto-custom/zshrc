@@ -12,3 +12,17 @@ fi
 
 # Customize to your needs...
 export EDITOR=vim
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+autoload -Uz promptinit
+promptinit
+prompt steeef
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+autoload -Uz promptinit
+promptinit
+prompt steeef

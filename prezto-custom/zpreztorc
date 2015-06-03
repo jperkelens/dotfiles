@@ -21,28 +21,31 @@ zstyle ':prezto:*:*' color 'yes'
 # Set the Prezto modules to load (browse modules). The order matters.
 zstyle ':prezto:load' pmodule \
   'environment' \
+  'terminal'\
   'editor' \
   'history' \
   'homebrew' \
   'directory' \
   'spectrum' \
   'utility' \
+  'ssh' \
   'completion' \
-  'emacs' \
+  'homebrew' \
+  'osx' \
   'git' \
   'gpg' \
-  'osx' \
-  'ssh' \
   'tmux' \
   'rsync' \
   'syntax-highlighting' \
+  'history-substring-search' \
   'prompt' 
+#
 #
 # Editor
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'vim'
+zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'
@@ -80,10 +83,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 
 # Set the prompt theme to load. Setting it to 'random' loads a random theme. Auto set to 'off' on dumb terminals.
-if [ -n "$INSIDE_EMACS" ]; then
-  zstyle ':prezto:module:prompt' theme 'peepcode' else
-  zstyle ':prezto:module:prompt' theme 'sorin' fi
-
+zstyle ':prezto:module:prompt' theme 'steeef'
 
 
 #
@@ -115,6 +115,10 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 #
 # Set syntax highlighting styles. zstyle ':prezto:module:syntax-highlighting' styles \
 #   'builtin' 'bg=blue' \ 'command' 'bg=blue' \ 'function' 'bg=blue'
+zstyle ':prezto:module:syntax-highlighting' styles \
+   'builtin' 'bg=blue' \ 
+   'command' 'bg=blue' \ 
+   'function' 'bg=blue'
 
 #
 # Terminal
