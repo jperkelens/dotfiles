@@ -27,7 +27,7 @@
   unadd = reset HEAD
   up = !git fetch origin && git rebase origin/master
   who = shortlog -n -s --no-merges
-
+  upsubs = submodule foreach --recursive git submodule update --init
   pl = !git branch --merged master | grep -v 'master$' | xargs git branch -d
   pr = !git remote prune origin
 
