@@ -13,6 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bufexplorer.zip'
 " Switch to last buffer
 Plugin 'bufmru.vim'
+" CoffeeScript
+Plugin 'kchmck/vim-coffee-script'
 " um, JQuery
 Plugin 'jQuery'
 " Fuzzy matching
@@ -56,6 +58,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+"clojure
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 
 call vundle#end()
 "filetype plugin indent on
