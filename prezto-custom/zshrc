@@ -11,6 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+export BUNYAN_NO_PAGER=true
 export EDITOR=vim
 alias vim='mvim -v'
 
