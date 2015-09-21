@@ -56,25 +56,23 @@ END
 
 task :prezto do
   puts "Installing prezto"
-  unless File.exists?(File.join(ENV['HOME'], '.zprezto'))
-    FileUtils.ln_s File.expand_path('./prezto'), File.expand_path('~/.zprezto')
-    Dir.glob('./prezto/runcoms/z*').each do |f|
-      file_name = f.split('/').last
-      puts(file_name)
-      unless(file_name.eql?('zpreztorc') or file_name.eql?('zshrc'))  
-        puts "Symlink " + f  + " "  + file_name
-        system %{ ln -s  #{File.expand_path(f)} ~/.#{file_name} }
-      end 
-    end
-    Dir.glob('./prezto-custom/z*').each do |f|
-      file_name = f.split('/').last
+  FileUtils.ln_s File.expand_path('./prezto'), File.expand_path('~/.zprezto'), :force => true
+  Dir.glob('./prezto/runcoms/z*').each do |f|
+    file_name = f.split('/').last
+    puts(file_name)
+    unless(file_name.eql?('zpreztorc') or file_name.eql?('zshrc'))  
       puts "Symlink " + f  + " "  + file_name
-      system %{ ln -s  #{File.expand_path(f)} ~/.#{file_name} }
-    end
+      FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true 
+    end 
+  end
+  Dir.glob('./prezto-custom/z*').each do |f|
+    file_name = f.split('/').last
+    puts "Symlink " + f  + " "  + file_name
+    FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
+  end
 
-    open File.expand_path('~/.zshrc'), 'a' do |f|
-      f.puts ZSHRC
-    end
+  open File.expand_path('~/.zshrc'), 'a' do |f|
+    f.puts ZSHRC
   end
 end
 
