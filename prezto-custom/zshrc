@@ -10,18 +10,27 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# set up prompt
+autoload -Uz promptinit
+promptinit
+prompt matt 
+
 # Customize to your needs...
 export BUNYAN_NO_PAGER=true
 export EDITOR=vim
-alias vim='mvim -v'
 
+# Platform specific config
+if [ "$(uname)" == "Darwin" ]; then
+    # Do something under Mac OS X platform        
+  alias vim='mvim -v'
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    # Do something under Linux platform
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    # Do something under Windows NT platform
+fi
 
 if [[ -s "/usr/local/share/zsh/site-functions/_aws" ]]; then
   source "/usr/local/share/zsh/site-functions/_aws"
 fi
 
 export BOOT_JVM_OPTIONS='-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx2g -XX:MaxPermSize=128m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xverify:none'
-autoload -Uz promptinit
-
-promptinit
-prompt matt 
