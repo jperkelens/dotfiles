@@ -60,7 +60,10 @@ task :prezto do
     puts "Symlink " + f  + " "  + file_name
     FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
   end
-  FileUtils.ln_s File.expand_path(f), File.expand_path("prezto/prezto/modules/prompt/functions/#{file_name}"), :force => true
+  prompt_file = 'prompt_matt_setup'
+  FileUtils.ln_s File.expand_path("./prezto-custom/#{prompt_file}"), 
+    File.expand_path("prezto/prezto/modules/prompt/functions/#{prompt_file}"), 
+    :force => true
 end
 
 task :configure_tmux => ['tmux'] do
