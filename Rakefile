@@ -57,14 +57,10 @@ task :prezto do
   end
   Dir.glob('./prezto-custom/z*').each do |f|
     file_name = f.split('/').last
-    if(file_name.eql?('prompt_matt_setup'))
-      FileUtils.ln_s File.expand_path(f), File.expand_path("prezto/prezto/modules/prompt/functions/#{file_name}"), :force => true
-    else
-      puts "Symlink " + f  + " "  + file_name
-      FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
-    end
+    puts "Symlink " + f  + " "  + file_name
+    FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
   end
-
+  FileUtils.ln_s File.expand_path(f), File.expand_path("prezto/prezto/modules/prompt/functions/#{file_name}"), :force => true
 end
 
 task :configure_tmux => ['tmux'] do
