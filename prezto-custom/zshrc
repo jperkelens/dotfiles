@@ -19,15 +19,14 @@ prompt matt
 export BUNYAN_NO_PAGER=true
 export EDITOR=vim
 
-# Platform specific config
-if [ "$(uname)" == "Darwin" ]; then
-    # Do something under Mac OS X platform        
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  # linux config 
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  # Mac OSX config
   alias vim='mvim -v'
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    # Do something under Linux platform
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-    # Do something under Windows NT platform
 fi
+
 
 if [[ -s "/usr/local/share/zsh/site-functions/_aws" ]]; then
   source "/usr/local/share/zsh/site-functions/_aws"
