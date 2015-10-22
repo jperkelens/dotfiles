@@ -61,6 +61,9 @@ Plugin 'honza/vim-snippets'
 "clojure
 Plugin 'vim-scripts/paredit.vim'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'rkneufeld/vim-boot'
+" Dash
+Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 "filetype plugin indent on
@@ -420,6 +423,9 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+if has("mac") || has("macunix")
+  nmap <leader>d :Dash<cr>
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
