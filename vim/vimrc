@@ -60,7 +60,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 "clojure
 Plugin 'vim-scripts/paredit.vim'
-Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'luochen1990/rainbow'
 Plugin 'rkneufeld/vim-boot'
 " Dash
 Plugin 'rizzatti/dash.vim'
@@ -131,7 +131,7 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 set wildignore+=**/node_modules/*,**/bower_components/*
-set wildignore+=*.log,*.sock,**/lib-conv/**
+set wildignore+=*.log,*.sock,**/lib-conv/**,**/target/*
 set wildignore+=*.png,*.gif,*.jpg,*.jpeg,*.class,nohup.out,*.swp
 set wildignore+=*.tmproj,*.pid,**/tmp/*,**/cookbooks/*
 
@@ -197,7 +197,7 @@ else
   colorscheme gruvbox "twilight256
 endif
 
-set guifont=InputMonoCompressed\ Thin:h18
+set guifont=InputMonoCompressed\ Thin:h16
 
 set background=dark
 
@@ -489,7 +489,7 @@ endfunction
 " Don't show the tab line
 set showtabline=0
 
-" UltiSnips ****************************************************************
+" UltiSnips *******************************************************************
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -523,12 +523,21 @@ map <Leader><Leader> <Plug>(easymotion-prefix)
 " UndoTree ********************************************************************
 map <Leader>r :UndotreeToggle <cr>
 
+" Turn on color column ********************************************************
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
 " fuzzyfinder *****************************************************************
 " limit number of rksults shown for performance
 let g:fuzzy_matching_limit=60
 
 " ignore stuff that can't be openned, and generated files
-let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;"
+let g:fuzzy_ignore += "coverage/**;tmp/**;rdoc/**;target/**;node_modules/**;"
+let g:fuzzy_ignore += "bower_modules/**"
 
 " increate the number of files scanned for very large projects
 let g:fuzzy_ceiling=20000
@@ -538,11 +547,11 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabMappingForward = '<S-Space>'
 
-" DelimitMate ********************************************************
+" DelimitMate *****************************************************************
 " Open a new line between braces
 imap <C-r> <CR><Esc>O
 
-" Vimsurround ********************************************************
+" Vimsurround *****************************************************************
 map      <leader>' ysiw'
 map      <leader>" ysiw"
 map      <leader>( ysiw)
@@ -552,18 +561,21 @@ map      <leader>] ysiw[
 map      <leader>{ ysiw}
 map      <leader>} ysiw{
 
-" Syntastic ****************************************************************
+" luochen1990/rainbow *********************************************************
+let g:rainbow_active = 1
+
+" Syntastic *******************************************************************
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 nmap <Leader>l :SyntasticReset <cr> 
 
-" Command-T ******************************************************
+" Command-T *******************************************************************
 let g:CommandTMaxFiles=10000
 noremap <Leader>t :CommandTFlush<cr>\|:CommandT<cr>
 
-" Fugitive ***********************************************************************
+" Fugitive ********************************************************************
 noremap <Leader>gs :Gstatus<cr>
 noremap <Leader>gd :Gvdiff<cr>
 noremap <Leader>g<S-k> :Gread<cr>

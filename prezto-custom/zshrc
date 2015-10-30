@@ -27,12 +27,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   alias vim='mvim -v'
 fi
 
-if [ -f .boot-jvm-options ]; then
-    OPTS=`cat .boot-jvm-options`
-fi
-
-BOOT_JVM_OPTIONS="$OPTS" boot "$@"
-
 
 if [[ -s "/usr/local/share/zsh/site-functions/_aws" ]]; then
   source "/usr/local/share/zsh/site-functions/_aws"
