@@ -586,3 +586,7 @@ noremap <Leader>gk :diffget<cr>
 noremap <Leader>gu :diffput<cr>
 noremap <Leader>gc :Gcommit<cr>
 
+" Limelight *******************************************************************
+nmap <Leader>L <Plug>(Limelight)
+xmap <Leader>L <Plug>(Limelight)
+
