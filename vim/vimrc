@@ -66,6 +66,8 @@ Plugin 'rkneufeld/vim-boot'
 Plugin 'rizzatti/dash.vim'
 " Distraction Free
 Plugin 'junegunn/limelight.vim'
+" Vuejs highlighter
+Plugin 'darthmall/vim-vue'
 
 call vundle#end()
 "filetype plugin indent on
