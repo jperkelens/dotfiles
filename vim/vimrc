@@ -64,6 +64,8 @@ Plugin 'luochen1990/rainbow'
 Plugin 'rkneufeld/vim-boot'
 " Dash
 Plugin 'rizzatti/dash.vim'
+" Distraction Free
+Plugin 'junegunn/limelight.vim'
 
 call vundle#end()
 "filetype plugin indent on
