@@ -539,7 +539,7 @@ let g:fuzzy_matching_limit=60
 " ignore stuff that can't be openned, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;"
 let g:fuzzy_ignore += "coverage/**;tmp/**;rdoc/**;target/**;node_modules/**;"
-let g:fuzzy_ignore += "bower_modules/**"
+let g:fuzzy_ignore += "bower_components/**;"
 
 " increate the number of files scanned for very large projects
 let g:fuzzy_ceiling=20000
