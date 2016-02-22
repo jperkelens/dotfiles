@@ -18,7 +18,8 @@ prompt matt
 # Customize to your needs...
 export BUNYAN_NO_PAGER=true
 export EDITOR=vim
-
+export NODE_ENV=development
+export BOOT_JVM_OPTIONS=-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx2g -XX:MaxPermSize=128m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xverify:none
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # linux config 
