@@ -1,78 +1,85 @@
 
-set nocompatible
 filetype off
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Bundles
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+"set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
+Plug 'freeo/vim-kalisi'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
+"Plugin 'gmarik/Vundle.vim'
 
-Plugin 'bufexplorer.zip'
+Plug 'jlanzarotta/bufexplorer'
 " Switch to last buffer
-Plugin 'bufmru.vim'
+Plug 'bufmru.vim'
 " CoffeeScript
-Plugin 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 " um, JQuery
-Plugin 'jQuery'
+Plug 'jQuery'
 " Fuzzy matching
-Plugin 'matchit.zip'
+"Plug 'matchit.zip'
 " Fast code commenting
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 " Project folder
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Tab completion
-Plugin 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 " Easy text motions
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 " Jade
-Plugin 'digitaltoad/vim-jade'
+Plug 'digitaltoad/vim-jade'
 " Js
 "Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax'
 " Date formatting
-Plugin 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 " Multiple Cursors
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 " Stylus
-Plugin 'wavded/vim-stylus'
+Plug 'wavded/vim-stylus'
 " Less
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Git Integration
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " File finding
-Plugin 'rphillips/fuzzyfinder'
+"Plug 'rphillips/fuzzyfinder'
 " Command-T
-Plugin 'wincent/Command-T'
+Plug 'kien/ctrlp.vim'
+"Plug 'wincent/Command-T'
 " Undo/Redo Tree
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 " Code Searching
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 " Paren Bracket and Quote matching
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 " Code linting
-Plugin 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 "clojure
-Plugin 'vim-scripts/paredit.vim'
-Plugin 'luochen1990/rainbow'
-Plugin 'rkneufeld/vim-boot'
+Plug 'vim-scripts/paredit.vim'
+Plug 'luochen1990/rainbow'
+Plug 'rkneufeld/vim-boot'
+Plug 'tpope/vim-fireplace'
 " Dash
-Plugin 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 " Distraction Free
-Plugin 'junegunn/limelight.vim'
-Plugin 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 " Vuejs highlighter
-Plugin 'darthmall/vim-vue'
+Plug 'darthmall/vim-vue'
 " Bookmarks
-Plugin 'MattesGroeger/vim-bookmarks'
+Plug 'MattesGroeger/vim-bookmarks'
+"Plug 'vim-airline/vim-airline'
 
-call vundle#end()
+call plug#end()
 "filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -80,7 +87,7 @@ call vundle#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Sets how many lines of history VIM has to remember
-set history=700
+set history=1000
 
 " Enable filetype plugins
 filetype plugin indent on
@@ -186,7 +193,7 @@ set mat=2
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
+"set t_vb=
 set tm=500
 
 " Don't Add a bit extra margin to the left
@@ -199,12 +206,12 @@ set foldcolumn=0
 syntax enable
 
 if has("gui_running")
-  colorscheme gruvbox "twilight jellybeans distinguished
+  colorscheme kalisi "gruvbox twilight jellybeans distinguished
 else
-  colorscheme gruvbox "twilight256
+  colorscheme kalisi "gruvbox twilight256
 endif
 
-set guifont=InputMonoCompressed\ Thin:h16
+set guifont=InputMono\ Thin:h16
 
 set background=dark
 
@@ -212,7 +219,7 @@ set background=dark
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
-    set t_Co=256
+    set t_co=256
     set guitablabel=%M\ %t
     set guioptions-=l
     set guioptions-=L
@@ -225,7 +232,7 @@ endif
 set guioptions-=r
 
 " Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8 
+"set encoding=utf8 
 
 " Use Unix as the standard file type
 set ffs=unix,mac,dos
@@ -268,7 +275,6 @@ set nowrap "Don't Wrap lines
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -280,16 +286,24 @@ map k gk
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
+
+" Open some windows
+noremap <Leader>wv :vsp<cr>
+noremap <Leader>ws :sp<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
+
+" Switch buffers
+map <Leader>bn :bn<cr>
+map <Leader>bp :bp<cr>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -317,11 +331,11 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%f%m%r%h
-set statusline+=\ %y\ %w 
-set statusline+=%{fugitive#statusline()}
-set statusline+=%=
-set statusline+=\ Line:%l/%L\ (%p%%)
+"set statusline=\ %{HasPaste()}%f%m%r%h
+"set statusline+=\ %y\ %w 
+"set statusline+=%{fugitive#statusline()}
+"set statusline+=%=
+"set statusline+=\ Line:%l/%L\ (%p%%)
  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -533,6 +547,7 @@ map <Leader>r :UndotreeToggle <cr>
 " Turn on color column ********************************************************
 if exists('+colorcolumn')
   set colorcolumn=80
+  hi ColorColumn ctermbg=lightgrey guibg=lightgrey 
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
@@ -559,28 +574,31 @@ let g:SuperTabMappingForward = '<S-Space>'
 imap <C-r> <CR><Esc>O
 
 " Vimsurround *****************************************************************
-map      <leader>' ysiw'
-map      <leader>" ysiw"
-map      <leader>( ysiw)
-map      <leader>) ysiw(
-map      <leader>[ ysiw]
-map      <leader>] ysiw[
-map      <leader>{ ysiw}
-map      <leader>} ysiw{
+map <leader>' ysiw'
+map <leader>" ysiw"
+map <leader>( ysiw)
+map <leader>) ysiw(
+map <leader>[ ysiw]
+map <leader>] ysiw[
+map <leader>{ ysiw}
+map <leader>} ysiw{
 
 " luochen1990/rainbow *********************************************************
 let g:rainbow_active = 1
 
 " Syntastic *******************************************************************
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 1
 nmap <Leader>l :SyntasticReset <cr> 
 
+" CtrlP ***********************************************************************
+noremap <Leader>t :CtrlP<cr>
+
 " Command-T *******************************************************************
-let g:CommandTMaxFiles=10000
-noremap <Leader>t :CommandTFlush<cr>\|:CommandT<cr>
+"let g:CommandTMaxFiles=10000
+"noremap <Leader>t :CommandTFlush<cr>\|:CommandT<cr>
 
 " Fugitive ********************************************************************
 noremap <Leader>gs :Gstatus<cr>
@@ -595,3 +613,15 @@ noremap <Leader>gc :Gcommit<cr>
 nmap <Leader>L <Plug>(Limelight)
 xmap <Leader>L <Plug>(Limelight)
 
+" airline *********************************************************************
+let g:airline_theme= 'kalisi'
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 2
+let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#right_sep = ' '
+"let g:airline#extensions#tabline#right_alt_sep = '|'
+" Buffer Explorer *************************************************************
+noremap <Leader>be :BufExplorer<cr>

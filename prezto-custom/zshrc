@@ -13,7 +13,7 @@ fi
 # set up prompt
 autoload -Uz promptinit
 promptinit
-prompt matt 
+prompt matt
 
 # Customize to your needs...
 export BUNYAN_NO_PAGER=true
@@ -22,10 +22,10 @@ export NODE_ENV=development
 export BOOT_JVM_OPTIONS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx256m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xverify:none"
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  # linux config 
+  # linux config
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX config
-  alias vim='mvim -v'
+  alias vim='nvim'
 fi
 
 LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras

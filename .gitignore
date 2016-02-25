@@ -1,6 +1,7 @@
 
 /emacs.d/ac*
 /emacs.d/.org*
+/vim/plugged/*
 
 # Numerous always-ignore extensions
 *.diff
