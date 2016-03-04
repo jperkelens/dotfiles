@@ -26,8 +26,6 @@ Plug 'jQuery'
 Plug 'scrooloose/nerdcommenter'
 " Project folder
 Plug 'scrooloose/nerdtree'
-" Tab completion
-"Plug 'ervandew/supertab'
 " Easy text motions
 Plug 'Lokaltog/vim-easymotion'
 " Jade
@@ -60,9 +58,9 @@ Plug 'Raimondi/delimitMate'
 "Plug 'scrooloose/syntastic'
 Plug 'benekastah/neomake'
 " Track the engine.
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
 "clojure
 Plug 'vim-scripts/paredit.vim'
 Plug 'luochen1990/rainbow'
@@ -74,7 +72,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 " Vuejs highlighter
-Plug 'darthmall/vim-vue'
+Plug 'posva/vim-vue'
 " Bookmarks
 Plug 'MattesGroeger/vim-bookmarks'
 " Autocomplet
@@ -514,9 +512,13 @@ set showtabline=0
 " UltiSnips *******************************************************************
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " NERDTree ********************************************************************
 " User instead of Netrw when doing an edit /foobar
@@ -586,13 +588,12 @@ map <leader>} ysiw{
 
 " luochen1990/rainbow *********************************************************
 let g:rainbow_active = 1
+let g:rainbow_conf = { 'separately': { 
+  \ '*': {}, 'css': 0, 'javascript': 0, 'pug': 0, 'vim': 0 
+  \ } }
 
-" Syntastic *******************************************************************
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 1
-nmap <Leader>l :SyntasticReset <cr> 
+" Evaluate Clojure buffers on load
+autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
 
 " CtrlP ***********************************************************************
 noremap <Leader>t :CtrlP<cr>
@@ -630,4 +631,5 @@ noremap <Leader>be :BufExplorer<cr>
 
 " Auotcomplete ****************************************************************
 let g:deoplete#enable_at_startup = 1
+
 
