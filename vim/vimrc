@@ -12,7 +12,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 "Plugin 'gmarik/Vundle.vim'
-"
 Plug 'jlanzarotta/bufexplorer'
 " Switch to last buffer
 Plug 'bufmru.vim'
@@ -20,8 +19,6 @@ Plug 'bufmru.vim'
 Plug 'kchmck/vim-coffee-script'
 " um, JQuery
 Plug 'jQuery'
-" Fuzzy matching
-"Plug 'matchit.zip'
 " Fast code commenting
 Plug 'scrooloose/nerdcommenter'
 " Project folder
@@ -44,10 +41,8 @@ Plug 'tpope/vim-surround'
 " Git Integration
 Plug 'tpope/vim-fugitive'
 " File finding
-"Plug 'rphillips/fuzzyfinder'
 " Command-T
 Plug 'kien/ctrlp.vim'
-"Plug 'wincent/Command-T'
 " Undo/Redo Tree
 Plug 'mbbill/undotree'
 " Code Searching
@@ -55,12 +50,11 @@ Plug 'mileszs/ack.vim'
 " Paren Bracket and Quote matching
 Plug 'Raimondi/delimitMate'
 " Code linting
-"Plug 'scrooloose/syntastic'
 Plug 'benekastah/neomake'
 " Track the engine.
-"Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-"Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 "clojure
 Plug 'vim-scripts/paredit.vim'
 Plug 'luochen1990/rainbow'
@@ -511,11 +505,10 @@ set showtabline=0
 
 " UltiSnips *******************************************************************
 
-" If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -566,11 +559,6 @@ let g:fuzzy_ignore += "bower_components/**;"
 
 " increate the number of files scanned for very large projects
 let g:fuzzy_ceiling=20000
-
-" supertab ********************************************************************
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabMappingForward = '<S-Space>'
 
 " DelimitMate *****************************************************************
 " Open a new line between braces
