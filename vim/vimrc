@@ -362,7 +362,7 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 
-autocmd BufWrite *.py,*.coffee,*.js :call DeleteTrailingWS()
+autocmd BufWrite *.py,*.coffee,*.js,*.vue,*.clj,*.jade :call DeleteTrailingWS()
 
 " Add semicolon to blank returns statement
 autocmd BufWrite *.js :%s/return$/return;/e
