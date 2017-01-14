@@ -71,6 +71,11 @@ Plug 'posva/vim-vue'
 Plug 'MattesGroeger/vim-bookmarks'
 " Autocomplet
 Plug 'Shougo/deoplete.nvim'
+" neo4j
+Plug 'neo4j-contrib/cypher-vim-syntax'
+" scala
+Plug 'derekwyatt/vim-scala'
+Plug 'gre/play2vim'
 
 call plug#end()
 "filetype plugin indent on
@@ -204,7 +209,7 @@ else
   colorscheme kalisi "gruvbox twilight256
 endif
 
-set guifont=InputMono\ Thin:h16
+set guifont=InputMono\ Thin:h14
 
 set background=dark
 
