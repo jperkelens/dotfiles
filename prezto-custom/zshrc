@@ -15,6 +15,8 @@ autoload -Uz promptinit
 promptinit
 prompt matt
 
+alias emacs="/usr/local/Cellar/emacs/25.3/bin/emacs"
+
 # Customize to your needs...
 export BUNYAN_NO_PAGER=true
 export EDITOR=vim

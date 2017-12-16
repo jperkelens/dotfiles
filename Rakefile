@@ -5,7 +5,7 @@ task :zsh do
   if ENV["SHELL"].include? 'zsh' then
     puts "Good for you, you're already using zsh"
   else
-    run %{ chsh -s /bin/zsh }
+    %{ chsh -s /bin/zsh }
   end
 end
 

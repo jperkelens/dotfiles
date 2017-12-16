@@ -14,11 +14,11 @@ Plug 'morhetz/gruvbox'
 "Plugin 'gmarik/Vundle.vim'
 Plug 'jlanzarotta/bufexplorer'
 " Switch to last buffer
-Plug 'bufmru.vim'
+Plug 'vim-scripts/bufmru.vim'
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script'
 " um, JQuery
-Plug 'jQuery'
+Plug 'vim-scripts/jQuery'
 " Fast code commenting
 Plug 'scrooloose/nerdcommenter'
 " Project folder
