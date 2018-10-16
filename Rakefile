@@ -5,7 +5,7 @@ task :zsh do
   if ENV["SHELL"].include? 'zsh' then
     puts "Good for you, you're already using zsh"
   else
-    run %{ chsh -s /bin/zsh }
+    %{ chsh -s /bin/zsh }
   end
 end
 
@@ -44,29 +44,26 @@ task :configure_emacs => ['emacs'] do
   end
 end
 
-ZSHRC = <<END
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-autoload -Uz promptinit
-promptinit
-prompt steeef
-END
-
 task :prezto do
   puts "Installing prezto"
-  unless File.exists?(File.join(ENV['HOME'], '.zprezto'))
-    FileUtils.ln_s File.expand_path('./prezto'), File.expand_path('~/.zprezto')
-    Dir.glob('./prezto/runcoms/z*').each do |f|
-      file_name = f.split('/').last
+  FileUtils.ln_s File.expand_path('./prezto'), File.expand_path('~/.zprezto'), :force => true
+  Dir.glob('./prezto/runcoms/z*').each do |f|
+    file_name = f.split('/').last
+    puts(file_name)
+    unless(file_name.eql?('zpreztorc') or file_name.eql?('zshrc'))
       puts "Symlink " + f  + " "  + file_name
-      system %{ ln -s  #{File.expand_path(f)} ~/.#{file_name} }
-    end
-    open File.expand_path('~/.zshrc'), 'a' do |f|
-      f.puts ZSHRC
-    end
+      FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true 
+    end 
   end
+  Dir.glob('./prezto-custom/z*').each do |f|
+    file_name = f.split('/').last
+    puts "Symlink " + f  + " "  + file_name
+    FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
+  end
+  prompt_file = 'prompt_matt_setup'
+  FileUtils.ln_s File.expand_path("./prezto-custom/#{prompt_file}"), 
+    File.expand_path("prezto/prezto/modules/prompt/functions/#{prompt_file}"), 
+    :force => true
 end
 
 task :configure_tmux => ['tmux'] do
@@ -82,7 +79,8 @@ end
 task :configure_git => ['git'] do
   puts "configuring git"
   unless File.exists? File.join(ENV['HOME'], '.prezto')
-    FileUtils.ln_s File.expand_path('./git/gitconfig'), File.expand_path('~/.gitconfig')
+    FileUtils.ln_s File.expand_path('./git/gitconfig'), 
+      File.expand_path('~/.gitconfig')
   else
     puts "no way man, you've already got a git config"
   end
@@ -90,8 +88,22 @@ end
 
 task :configure_vim do
   puts "configuring vim"
+
+  config_home = File.join(ENV['HOME'], '.config')
+
+  unless File.exists? config_home
+    FileUtils.mkdir_p File.expand_path(config_home)
+
+    FileUtils.ln_s File.expand_path(ENV['HOME'], '.vim')
+      File.expand_path(config_home, 'nvim')
+
+    FileUtils.ln_s File.expand_path(ENV['HOME'], '.vimrc')
+      File.expand_path(config_home, 'nvim', 'init.vim')
+  end
+
   unless File.exists? File.join(ENV['HOME'], '.vimrc')
-    FileUtils.ln_s File.expand_path('./vim/vimrc'), File.expand_path('~/.vimrc')
+    FileUtils.ln_s File.expand_path('./vim/vimrc'),
+      File.expand_path('~/.vimrc')
   else
     puts "Not a chance. That file is already there"
   end

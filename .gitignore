@@ -1,8 +1,6 @@
-emacs.d/semanticdb/*
-emacs.d/ac*
-emacs.d/ac-*
-emacs.d/.org*
-emacs.d/elpa
+/emacs.d/ac*
+/emacs.d/.org*
+/vim/plugged/*
 
 # Numerous always-ignore extensions
 *.diff

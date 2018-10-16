@@ -1,0 +1,69 @@
+snippet it "it block" b
+it("${1:description}", function(done) {
+	${0}
+	done()
+})
+endsnippet
+
+snippet its "it sync block" b
+it("${1:description}", function() {
+	${0}
+})
+endsnippet
+
+
+snippet des "describe" b
+describe("${1:description}", function() {
+	${0}
+})
+endsnippet
+
+snippet desit "Nested it block in describe block" b
+describe("${1:description}", function() {
+	it("${2:description}", function(done) {
+		${0}
+		${3:done()}
+	})
+})
+endsnippet
+
+snippet /* "multiline comment" b
+/**
+ * ${1}
+ */
+ ${0}
+endsnippet
+
+snippet be "Before Each Block" b
+beforeEach(function(done) {
+  ${0}
+  done()
+})
+endsnippet
+
+snippet ld "Debug Log" b
+log.debug({${1:object}: $1}, "${2:message}")
+${0}
+endsnippet
+
+snippet le "Error Log" b
+log.error({${1:object}: $1}, "${2:message}")
+${0}
+endsnippet
+
+snippet li "Info Log" b
+log.info({${1:object}: $1}, "${2:message}")
+${0}
+endsnippet
+
+snippet lw "Warning Log" b
+log.warn({${1:object}: $1}, "${2:message}")
+${0}
+endsnippet
+
+snippet lf "Fatal Log" b
+log.fatal({${1:object}: $1}, "${2:message}")
+${0}
+endsnippet
+
+

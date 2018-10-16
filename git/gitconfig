@@ -12,7 +12,8 @@
   b = branch -a --color
   c = commit -m
   ca = commit --amend -C HEAD
-  co = checkout
+  co = !"f() { git checkout $1 && npm install; }; f"
+  master = !git co master && git pull && npm install
   cob = checkout -b
   datetag = !git tag `date "+%Y%m%d%H%M"`
   done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && git push
@@ -27,7 +28,7 @@
   unadd = reset HEAD
   up = !git fetch origin && git rebase origin/master
   who = shortlog -n -s --no-merges
-
+  upsubs = submodule foreach --recursive git submodule update --init
   pl = !git branch --merged master | grep -v 'master$' | xargs git branch -d
   pr = !git remote prune origin
 
