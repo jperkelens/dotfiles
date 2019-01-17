@@ -1,14 +1,17 @@
 require 'rake'
 
-task setup: [:hello, :install_lunchy, :term, :editor] do
+# Primary setup task
+task setup: [:hello, :install_lunchy, :term, :configure_git, :editor] do
   puts "Setup complete"
 end
 
+# Start message and brew update
 task :hello do
   puts "Beginning Setup"
   puts %x{ brew update }
 end
 
+# configure the terminal
 task term: [:install_zsh, :setup_prezto, :tmux]
 
 task :install_lunchy do
@@ -35,7 +38,7 @@ task :setup_prezto do
     file_name = f.split('/').last
     puts(file_name)
     puts "Symlink " + f  + " "  + file_name
-    FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true 
+    FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
 
   end
   Dir.glob('./prezto-custom/z*').each do |f|
@@ -44,8 +47,8 @@ task :setup_prezto do
     FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
   end
   prompt_file = 'prompt_matt_setup'
-  FileUtils.ln_s File.expand_path("./prezto-custom/#{prompt_file}"), 
-    File.expand_path("prezto/prezto/modules/prompt/functions/#{prompt_file}"), 
+  FileUtils.ln_s File.expand_path("./prezto-custom/#{prompt_file}"),
+    File.expand_path("prezto/prezto/modules/prompt/functions/#{prompt_file}"),
     :force => true
 end
 
@@ -65,60 +68,22 @@ task :configure_tmux do
   system %{ ln -s #{source} ~/.tmux.conf}
 end
 
+# install spacemacs
 task editor: [:install_emacs, :install_spacemacs]
 
 task :install_emacs do
   puts "installing emacs"
   puts %x{ brew tap d12frosted/emacs-plus }
   puts %x{ brew install emacs-plus }
-  puts %x{ brew linkapps emacs-plus }
-   
+  puts %x{ ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications }
 end
 
 task :install_spacemacs do
   puts %x{ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d }
 end
 
-
-
-
-file 'emacs' do
-  puts "Checking for existance of emacs"
-  unless system %{ emacs --version }
-    puts("You have to install emacs first")
-    fail
-  end
-end
-
-file 'git' do
-  puts 'Checking for existance of git'
-  unless system %{ git --version }
-    puts("You have to install git first")
-    fail
-  end
-end
-
-task :configure_emacs => ['emacs'] do
-  puts "Installing Emacs config"
-  unless File.exists?(File.join(ENV['HOME'], '.emacs.d'))
-    source = "#{ENV["PWD"]}/emacs.d"
-    puts "symlink #{source}"
-    system %( ln -s #{source} ~/.emacs.d)
-  else
-    puts "Emacs config already exists, I'm not messing with it."
-  end
-end
-
-
-
-
 task :configure_git => ['git'] do
   puts "configuring git"
-  unless File.exists? File.join(ENV['HOME'], '.prezto')
-    FileUtils.ln_s File.expand_path('./git/gitconfig'), 
-      File.expand_path('~/.gitconfig')
-  else
-    puts "no way man, you've already got a git config"
-  end
+  FileUtils.ln_s File.expand_path('./git/gitconfig'), File.expand_path('~/.gitconfig')
 end
 
