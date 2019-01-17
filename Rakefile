@@ -1,26 +1,91 @@
 require 'rake'
 
-task :zsh do
-  puts "Setting default shell"
+task setup: [:hello, :install_lunchy, :term, :editor] do
+  puts "Setup complete"
+end
+
+task :hello do
+  puts "Beginning Setup"
+  puts %x{ brew update }
+end
+
+task term: [:install_zsh, :setup_prezto, :tmux]
+
+task :install_lunchy do
+  unless system %{ lunchy }
+    puts "Installing Lunchy"
+    puts %x{sudo gem install lunchy}
+  end
+end
+
+task :install_zsh do
+  puts "Setting default shell to zsh"
   if ENV["SHELL"].include? 'zsh' then
     puts "Good for you, you're already using zsh"
   else
-    %{ chsh -s /bin/zsh }
+    puts "executing chsh"
+    puts %x{ chsh -s /bin/zsh }
   end
 end
+
+task :setup_prezto do
+  puts "Installing prezto"
+  FileUtils.ln_s File.expand_path('./prezto'), File.expand_path('~/.zprezto'), :force => true
+  Dir.glob('./prezto/runcoms/z*').each do |f|
+    file_name = f.split('/').last
+    puts(file_name)
+    puts "Symlink " + f  + " "  + file_name
+    FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true 
+
+  end
+  Dir.glob('./prezto-custom/z*').each do |f|
+    file_name = f.split('/').last
+    puts "Symlink " + f  + " "  + file_name
+    FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
+  end
+  prompt_file = 'prompt_matt_setup'
+  FileUtils.ln_s File.expand_path("./prezto-custom/#{prompt_file}"), 
+    File.expand_path("prezto/prezto/modules/prompt/functions/#{prompt_file}"), 
+    :force => true
+end
+
+task tmux: [:install_tmux, :configure_tmux]
+
+file 'install_tmux' do
+  unless system %{ tmux -V }
+    puts "Installing tmux"
+    puts %x{ brew install tmux }
+  end
+end
+
+task :configure_tmux do
+  puts "Configuring Tmux"
+  source = "#{ENV['PWD']}/tmux/tmux.conf"
+  puts "symlink #{source}"
+  system %{ ln -s #{source} ~/.tmux.conf}
+end
+
+task editor: [:install_emacs, :install_spacemacs]
+
+task :install_emacs do
+  puts "installing emacs"
+  puts %x{ brew tap d12frosted/emacs-plus }
+  puts %x{ brew install emacs-plus }
+  puts %x{ brew linkapps emacs-plus }
+   
+end
+
+task :install_spacemacs do
+  puts %x{ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d }
+end
+
+
+
 
 file 'emacs' do
   puts "Checking for existance of emacs"
   unless system %{ emacs --version }
     puts("You have to install emacs first")
-    fail
-  end
-end
-
-file 'tmux' do
-  puts 'Checking for existance of tmux'
-  unless system %{ tmux -V }
-    puts("You have to install tmux first")
     fail
   end
 end
@@ -44,37 +109,8 @@ task :configure_emacs => ['emacs'] do
   end
 end
 
-task :prezto do
-  puts "Installing prezto"
-  FileUtils.ln_s File.expand_path('./prezto'), File.expand_path('~/.zprezto'), :force => true
-  Dir.glob('./prezto/runcoms/z*').each do |f|
-    file_name = f.split('/').last
-    puts(file_name)
-    unless(file_name.eql?('zpreztorc') or file_name.eql?('zshrc'))
-      puts "Symlink " + f  + " "  + file_name
-      FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true 
-    end 
-  end
-  Dir.glob('./prezto-custom/z*').each do |f|
-    file_name = f.split('/').last
-    puts "Symlink " + f  + " "  + file_name
-    FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
-  end
-  prompt_file = 'prompt_matt_setup'
-  FileUtils.ln_s File.expand_path("./prezto-custom/#{prompt_file}"), 
-    File.expand_path("prezto/prezto/modules/prompt/functions/#{prompt_file}"), 
-    :force => true
-end
 
-task :configure_tmux => ['tmux'] do
-  unless File.exists?(File.join(ENV['HOME'], '.tmux.conf'))
-    source = "#{ENV['PWD']}/tmux/tmux.conf"
-    puts "symlink #{source}"
-    system %{ ln -s #{source} ~/.tmux.conf}
-  else
-    puts "tmux config already exists, so... i'll just leave it alone"
-  end
-end
+
 
 task :configure_git => ['git'] do
   puts "configuring git"
@@ -86,36 +122,3 @@ task :configure_git => ['git'] do
   end
 end
 
-task :configure_vim do
-  puts "configuring vim"
-
-  config_home = File.join(ENV['HOME'], '.config')
-
-  unless File.exists? config_home
-    FileUtils.mkdir_p File.expand_path(config_home)
-
-    FileUtils.ln_s File.expand_path(ENV['HOME'], '.vim')
-      File.expand_path(config_home, 'nvim')
-
-    FileUtils.ln_s File.expand_path(ENV['HOME'], '.vimrc')
-      File.expand_path(config_home, 'nvim', 'init.vim')
-  end
-
-  unless File.exists? File.join(ENV['HOME'], '.vimrc')
-    FileUtils.ln_s File.expand_path('./vim/vimrc'),
-      File.expand_path('~/.vimrc')
-  else
-    puts "Not a chance. That file is already there"
-  end
-end
-
-task :configure_lein  do
-  unless File.exists?(File.join(ENV['HOME'], '.lein/profiles.clj'))
-    source = "#{ENV['PWD']}/lein/profiles.clj"
-    puts "symlink #{source}"
-    system %{ ln -s #{source} ~/.lein/profiles.clj}
-  else
-    puts "profiles.clj already exists, so... you're on your own buddy"
-  end
-
-end
