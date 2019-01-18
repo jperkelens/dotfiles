@@ -30,7 +30,9 @@
 ;;; Code:
 
 (defconst romanmt-packages
-  '()
+  '(
+    all-the-icons
+    )
   "The list of Lisp packages required by the romanmt layer.
 
 Each entry is either:
@@ -59,4 +61,6 @@ Each entry is either:
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format"
   )
 
+(defun romanmt/init-all-the-icons()
+  (use-package all-the-icons))
 ;;; packages.el ends here

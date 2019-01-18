@@ -1,5 +1,9 @@
 (configuration-layer/declare-layers
  '(
    ruby
+   javascript
+   elixir
+   clojure
    ibuffer
+   docker
    themes-megapack))

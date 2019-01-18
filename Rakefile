@@ -74,7 +74,7 @@ task editor: [:install_emacs, :install_spacemacs]
 task :install_emacs do
   puts "installing emacs"
   puts %x{ brew tap d12frosted/emacs-plus }
-  puts %x{ brew install emacs-plus }
+  puts %x{ brew install emacs-plus --HEAD }
   puts %x{ ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications }
 end
 
@@ -86,4 +86,3 @@ task :configure_git => ['git'] do
   puts "configuring git"
   FileUtils.ln_s File.expand_path('./git/gitconfig'), File.expand_path('~/.gitconfig')
 end
-
