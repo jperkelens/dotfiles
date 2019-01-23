@@ -1,4 +1,4 @@
-
+/node_modules
 /emacs.d/ac*
 /emacs.d/.org*
 /vim/plugged/*
