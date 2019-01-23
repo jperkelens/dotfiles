@@ -5,8 +5,10 @@
 (spacemacs/load-theme 'soft-charcoal)
 
 ;; configure neo theme to use icons
-;(setq neo-theme 'icons)
+(setq neo-theme 'nerd)
 
-(setq initial-frame-alist '((top . 30) (left . 30) (width . 180) (height . 80)))
+(setq initial-frame-alist '((top . 30) (left . 30) (width . 180) (height . 70)))
 
 (set-face-attribute 'default nil :font "Input Mono" )
+(set-face-attribute 'default nil :height 160 )
+

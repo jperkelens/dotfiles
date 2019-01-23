@@ -1,9 +1,11 @@
 (configuration-layer/declare-layers
  '(
+   osx
+   syntax-checking
    ruby
-   javascript
    elixir
-   clojure
+   javascript
+   react
    ibuffer
    docker
    themes-megapack))

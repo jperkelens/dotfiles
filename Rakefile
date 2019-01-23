@@ -1,7 +1,7 @@
 require 'rake'
 
 # Primary setup task
-task setup: [:hello, :install_lunchy, :term, :configure_git, :editor] do
+task setup: [:hello, :install_node, :install_lunchy, :term, :configure_git, :editor] do
   puts "Setup complete"
 end
 
@@ -11,7 +11,14 @@ task :hello do
   puts %x{ brew update }
 end
 
+task :install_node do
+  puts %x{ brew install node }
+  puts %x{ npm install n -g }
+  puts %x{ sudo n latest }
+end
+
 # configure the terminal
+
 task term: [:install_zsh, :setup_prezto, :tmux]
 
 task :install_lunchy do
@@ -80,6 +87,7 @@ end
 
 task :install_spacemacs do
   puts %x{ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d }
+  FileUtils.ln_s './spacemacs_layer/romanmt', '~/.emacs.d/private/romanmt'
 end
 
 task :configure_git => ['git'] do
