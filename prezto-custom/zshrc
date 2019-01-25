@@ -18,9 +18,8 @@ prompt matt
 alias emacs="/usr/local/Cellar/emacs-plus/26.1/Emacs.app"
 
 # Customize to your needs...
-export PATH=$PATH:/usr/local/Cellar/node/11.6.0/bin
 export BUNYAN_NO_PAGER=true
-export EDITOR=vim
+export EDITOR=emacs
 export NODE_ENV=development
 export BOOT_JVM_OPTIONS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx256m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xverify:none"
 
