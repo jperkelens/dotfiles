@@ -70,12 +70,18 @@ Plug 'posva/vim-vue'
 " Bookmarks
 Plug 'MattesGroeger/vim-bookmarks'
 " Autocomplet
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/deoplete.nvim'
 " neo4j
 Plug 'neo4j-contrib/cypher-vim-syntax'
 " scala
 Plug 'derekwyatt/vim-scala'
 Plug 'gre/play2vim'
+" Python
+Plug 'davidhalter/jedi-vim'
+" EditorConfig
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 "filetype plugin indent on
@@ -142,9 +148,9 @@ if has("win16") || has("win32")
 else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
-set wildignore+=**/node_modules/*,*.log,*.sock,**/lib-cov/**
+set wildignore+=**/node_modules/*,*.log,*.sock,**/lib-cov/**,**/dist,**/dags
 set wildignore+=*.png,*.gif,*.jpg,*.jpeg,*.class,nohup.out,*.swp
-set wildignore+=*.tmproj,*.pid,**/tmp/*,**/bower_components/*
+set wildignore+=*.tmproj,*.pid,**/tmp/*,**/bower_components/*,**build,**/dependencies
 set wildmode=list:longest,full
 
 "Always show current position
@@ -557,7 +563,7 @@ let g:bufExplorerShowDirectories=0
 map <Leader><Leader> <Plug>(easymotion-prefix)
 
 " UndoTree ********************************************************************
-map <Leader>r :UndotreeToggle <cr>
+map <Leader>u :UndotreeToggle <cr>
 
 " Turn on color column ********************************************************
 if exists('+colorcolumn')
@@ -640,9 +646,6 @@ noremap <Leader>be :BufExplorer<cr>
 let g:deoplete#enable_at_startup = 1
 
 
-" Command-T ******************************************************
-let g:CommandTMaxFiles=10000
-noremap <Leader>t :CommandTFlush<cr>\|:CommandT<cr>
 " Fugitive ***********************************************************************
 noremap <Leader>gs :Gstatus<cr>
 noremap <Leader>gd :Gvdiff<cr>
@@ -652,5 +655,8 @@ noremap <Leader>gk :diffget<cr>
 noremap <Leader>gu :diffput<cr>
 noremap <Leader>gc :Gcommit<cr>
 
-colorscheme jellybeans
+" jedi-vim *****************************************************
 
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#completions_command = "<leader>c"
+let g:jedi#usages_command = "<leader>u"
