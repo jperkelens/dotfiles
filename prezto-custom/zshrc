@@ -39,3 +39,6 @@ if [[ -s "/usr/local/share/zsh/site-functions/_aws" ]]; then
   source "/usr/local/share/zsh/site-functions/_aws"
 fi
 
+. /usr/local/opt/asdf/asdf.sh
+
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash

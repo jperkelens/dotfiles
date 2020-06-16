@@ -87,7 +87,8 @@ end
 
 task :install_spacemacs do
   puts %x{ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d }
-  FileUtils.ln_s './spacemacs_layer/romanmt', '~/.emacs.d/private/romanmt'
+  FileUtils.ln_s File.expand_path('./spacemacs_layer/romanmt'), File.expand_path('~/.emacs.d/private/romanmt')
+  FileUtils.ln_s File.expand_path('./spacemacs_layer/solidity'), File.expand_path('~/.emacs.d/private/solidity')
 end
 
 task :configure_git => ['git'] do

@@ -9,4 +9,5 @@
    react
    ibuffer
    docker
+   solidity
    themes-megapack))

@@ -7,10 +7,17 @@
 ;; configure neo theme to use icons
 (setq neo-theme 'nerd)
 
-(setq initial-frame-alist '((top . 30) (left . 30) (width . 180) (height . 50)))
+;; turn off lock files
+(setq create-lockfiles nil)
 
-(set-face-attribute 'default nil :font "Input Mono" )
-(set-face-attribute 'default nil :height 160 )
+(setq initial-frame-alist '((top . 30) (left . 30) (width . 140) (height . 50)))
+
+;;(set-default-font  "-*-Input Mono-ultralight-normal-normal-*-18-*-*-*-m-0-iso10646-1")
+;;(set-face-attribute
+;; 'default nil :font
+;; "-*-Input Mono-ultralight-normal-normal-*-20-*-*-*-m-0-iso10646-1")
+;;(set-face-attribute 'default nil :family "Input Mono" )
+;;(set-face-attribute 'default nil :weight ultra-light )
 
 ;; Move autosaves out of source tree
 (setq backup-directory-alist
