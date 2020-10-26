@@ -1,13 +1,22 @@
 (configuration-layer/declare-layers
  '(
+   better-defaults
+   spell-checking
    osx
+   git
+   ;;org
+   crystal
    syntax-checking
    auto-completion
    ruby
    elixir
+   phoenix
    javascript
    react
    ibuffer
    docker
+   typescript
    solidity
+   csharp
    themes-megapack))
+

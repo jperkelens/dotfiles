@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+#name : handler
+#key : handler
+#contributor : Matt Roman
+# --
+  def handle_event("$1", ${2:attr}, socket) do
+
+    socket =
+      assign(socket,
+        zip: $2
+      )
+
+    {:noreply, socket}
+  end

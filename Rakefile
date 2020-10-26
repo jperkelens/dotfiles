@@ -80,15 +80,17 @@ task editor: [:install_emacs, :install_spacemacs]
 
 task :install_emacs do
   puts "installing emacs"
-  puts %x{ brew tap d12frosted/emacs-plus }
-  puts %x{ brew install emacs-plus --HEAD }
-  puts %x{ ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications }
+  puts %x{ brew install ispell }
+  puts %x{ brew tap railwaycat/emacsmacport }
+  puts %x{ brew cask install emacs-mac }
 end
 
 task :install_spacemacs do
   puts %x{ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d }
   FileUtils.ln_s File.expand_path('./spacemacs_layer/romanmt'), File.expand_path('~/.emacs.d/private/romanmt')
   FileUtils.ln_s File.expand_path('./spacemacs_layer/solidity'), File.expand_path('~/.emacs.d/private/solidity')
+  FileUtils.ln_s File.expand_path('./spacemacs_layer/snippets'), File.expand_path('~/.emacs.d/private/snippets')
+  FileUtils.ln_s File.expand_path('./spacemacs_layer/spacemacs-crystal-layer'), File.expand_path('~/.emacs.d/private/spacemacs-crystal-layer')
 end
 
 task :configure_git => ['git'] do
