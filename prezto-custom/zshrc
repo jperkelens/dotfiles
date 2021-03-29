@@ -15,11 +15,11 @@ autoload -Uz promptinit
 promptinit
 prompt matt
 
-alias emacs="/usr/local/Cellar/emacs/25.3/bin/emacs"
+alias emacs="/usr/local/Cellar/emacs-plus/26.1/Emacs.app"
 
 # Customize to your needs...
 export BUNYAN_NO_PAGER=true
-export EDITOR=vim
+export EDITOR=emacs
 export NODE_ENV=development
 export BOOT_JVM_OPTIONS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx256m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xverify:none"
 
@@ -39,3 +39,8 @@ if [[ -s "/usr/local/share/zsh/site-functions/_aws" ]]; then
   source "/usr/local/share/zsh/site-functions/_aws"
 fi
 
+. /usr/local/opt/asdf/asdf.sh
+
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+
+. $(brew --prefix asdf)/asdf.sh

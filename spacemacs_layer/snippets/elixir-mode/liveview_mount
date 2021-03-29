@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+#name : liveview_mount
+#key : liveview_mount
+#contributor : Matt Roman
+# --
+  def mount(_params, _session, socket) do
+    socket =
+      assign(socket,
+        ${1:key}: ${2;value}
+      )
+
+    {:ok, socket}
+  end
