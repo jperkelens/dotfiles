@@ -24,7 +24,7 @@ task term: [:install_zsh, :setup_prezto, :tmux]
 task :install_lunchy do
   unless system %{ lunchy }
     puts "Installing Lunchy"
-    puts %x{sudo gem install lunchy}
+    puts %x{brew install lunchy}
   end
 end
 
@@ -71,12 +71,28 @@ end
 task :configure_tmux do
   puts "Configuring Tmux"
   source = "#{ENV['PWD']}/tmux/tmux.conf"
-  puts "symlink #{source}"
-  system %{ ln -s #{source} ~/.tmux.conf}
+  unless File.exists? source
+    puts "symlink #{source}"
+    system %{ ln -s #{source} ~/.tmux.conf}
+  end
 end
 
 # install spacemacs
-task editor: [:install_emacs, :install_spacemacs]
+task editor: [:install_neovim, :configure_vim]
+
+task :install_neovim do
+  puts "installing neovim"
+  puts %x{ brew install neovim }
+end
+
+task :configure_vim do
+  puts "Configuring vim"
+  source = "#{ENV['PWD']}/vim/vimrc"
+  unless File.exists? source
+    puts "symlink #{source}"
+    system %{ ln -s #{source} ~/.vimrc }
+  end
+end
 
 task :install_emacs do
   puts "installing emacs"
