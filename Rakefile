@@ -54,8 +54,9 @@ task :setup_prezto do
     FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
   end
   prompt_file = 'prompt_matt_setup'
+  puts "Symlink " + prompt_file
   FileUtils.ln_s File.expand_path("./prezto-custom/#{prompt_file}"),
-    File.expand_path("prezto/prezto/modules/prompt/functions/#{prompt_file}"),
+    File.expand_path("~/.zprezto/modules/prompt/functions/#{prompt_file}"),
     :force => true
 end
 
@@ -88,10 +89,12 @@ end
 task :configure_vim do
   puts "Configuring vim"
   source = "#{ENV['PWD']}/vim/vimrc"
-  unless File.exists? source
-    puts "symlink #{source}"
-    system %{ ln -s #{source} ~/.vimrc }
-  end
+  puts "symlink #{source}"
+  system %{ ln -s #{source} ~/.vimrc }
+
+  source = "#{ENV['PWD']}/vim/init.vim"
+  puts "symlink #{source}"
+  system %{ ln -s #{source} ~/.config/nvim/init.vim }
 end
 
 task :install_emacs do
