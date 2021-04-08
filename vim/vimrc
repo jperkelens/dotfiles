@@ -5,86 +5,86 @@ filetype off
 " => Bundles
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/plugged')
+" Neovim Remote Process 
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+
+" Themes
 Plug 'freeo/vim-kalisi'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
-"Plugin 'gmarik/Vundle.vim'
+
+" Buffer Explorer
 Plug 'jlanzarotta/bufexplorer'
+
 " Switch to last buffer
 Plug 'vim-scripts/bufmru.vim'
-" CoffeeScript
-Plug 'kchmck/vim-coffee-script'
-" um, JQuery
-Plug 'vim-scripts/jQuery'
+
+" Asyncronous file linting
+" Plug 'neomake/neomake'
+
 " Fast code commenting
-Plug 'scrooloose/nerdcommenter'
+" Plug 'scrooloose/nerdcommenter'
+"
 " Project folder
 Plug 'scrooloose/nerdtree'
+
 " Easy text motions
 Plug 'Lokaltog/vim-easymotion'
-" Jade
-Plug 'digitaltoad/vim-jade'
-" Js
-"Plugin 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-" Date formatting
+
+" Date formatting <C-a> <C-x>
 Plug 'tpope/vim-speeddating'
-" Multiple Cursors
-Plug 'terryma/vim-multiple-cursors'
-" Stylus
-Plug 'wavded/vim-stylus'
-" Less
+
+" Multiple Cursors In Visual mode
+Plug 'mg979/vim-visual-multi'
+
+" surround
 Plug 'tpope/vim-surround'
+
 " Git Integration
 Plug 'tpope/vim-fugitive'
+
 " File finding
-" Command-T
 Plug 'kien/ctrlp.vim'
+
 " Undo/Redo Tree
 Plug 'mbbill/undotree'
+
 " Code Searching
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
+
 " Paren Bracket and Quote matching
 Plug 'Raimondi/delimitMate'
-" Code linting
-Plug 'benekastah/neomake'
-" Track the engine.
-Plug 'SirVer/ultisnips'
+
+" Snippets
+" Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
-"clojure
+" Plug 'honza/vim-snippets'
+
+" Parens
 Plug 'vim-scripts/paredit.vim'
 Plug 'luochen1990/rainbow'
-Plug 'rkneufeld/vim-boot'
-Plug 'tpope/vim-fireplace'
-" Dash
-Plug 'rizzatti/dash.vim'
-" Distraction Free
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/goyo.vim'
-" Vuejs highlighter
-Plug 'posva/vim-vue'
+
 " Bookmarks
-Plug 'MattesGroeger/vim-bookmarks'
-" Autocomplet
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/deoplete.nvim'
-" neo4j
-Plug 'neo4j-contrib/cypher-vim-syntax'
+"Plug 'MattesGroeger/vim-bookmarks'
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " scala
-Plug 'derekwyatt/vim-scala'
-Plug 'gre/play2vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'derekwyatt/vim-scala'
+" Plug 'gre/play2vim'
+" Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
+
+
 " Python
 Plug 'davidhalter/jedi-vim'
+
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
-"filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -531,13 +531,13 @@ set showtabline=0
 
 " UltiSnips *******************************************************************
 
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" 
+" " If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
 
 " NERDTree ********************************************************************
 " User instead of Netrw when doing an edit /foobar
@@ -554,9 +554,6 @@ let NERDTreeQuitOnOpen=1
 
 noremap <Leader>n :NERDTreeToggle <cr>
 
-" bufexplorer *****************************************************************
-let g:bufExplorerDefaultHelp=1
-let g:bufExplorerShowDirectories=0
 
 " easymotion ******************************************************************
 "let g:EasyMotion_leader_key = '<Leader> em'
@@ -567,10 +564,10 @@ map <Leader>u :UndotreeToggle <cr>
 
 " Turn on color column ********************************************************
 if exists('+colorcolumn')
-  set colorcolumn=80
-  hi ColorColumn ctermbg=lightgrey guibg=lightgrey 
+set colorcolumn=80
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey 
 else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
 " fuzzyfinder *****************************************************************
@@ -602,31 +599,11 @@ map <leader>} ysiw{
 " luochen1990/rainbow *********************************************************
 let g:rainbow_active = 1
 let g:rainbow_conf = { 'separately': { 
-  \ '*': {}, 'css': 0, 'javascript': 0, 'pug': 0, 'vim': 0 
-  \ } }
-
-" Evaluate Clojure buffers on load
-autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+\ '*': {}, 'css': 0, 'javascript': 0, 'pug': 0, 'vim': 0 
+\ } }
 
 " CtrlP ***********************************************************************
 noremap <Leader>t :CtrlP<cr>
-
-" Command-T *******************************************************************
-"let g:CommandTMaxFiles=10000
-"noremap <Leader>t :CommandTFlush<cr>\|:CommandT<cr>
-
-" Fugitive ********************************************************************
-noremap <Leader>gs :Gstatus<cr>
-noremap <Leader>gd :Gvdiff<cr>
-noremap <Leader>g<S-k> :Gread<cr>
-noremap <Leader>g<S-u> :Gwrite<cr>
-noremap <Leader>gk :diffget<cr>
-noremap <Leader>gu :diffput<cr>
-noremap <Leader>gc :Gcommit<cr>
-
-" Limelight *******************************************************************
-nmap <Leader>L <Plug>(Limelight)
-xmap <Leader>L <Plug>(Limelight)
 
 " airline *********************************************************************
 let g:airline_theme= 'kalisi'
@@ -634,29 +611,103 @@ let g:airline_theme= 'kalisi'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline#extensions#tabline#right_sep = ' '
-"let g:airline#extensions#tabline#right_alt_sep = '|'
 
 " Buffer Explorer *************************************************************
+let g:bufExplorerDefaultHelp=1
+let g:bufExplorerShowDirectories=0
 noremap <Leader>be :BufExplorer<cr>
 
-" Auotcomplete ****************************************************************
-let g:deoplete#enable_at_startup = 1
+" Autocomplete ****************************************************************
+let g:deoplete#enable_at_startup = 0
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 
+" Scala Metals IDE ******************************************************
+autocmd FileType json syntax match Comment +\/\.\+$+
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
+
+" Tab auto completions
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function s:check_back_space() abort
+let col = col('.') - 1 
+return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" Enter autoselects + formats on enter
+inoremap <silent><expr> <C-space> coc#refresh()
+inoremap <silent><expr> <cr> 
+\ pumvisible() ? coc#_select_confirm() :
+\ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Navigate diagnostic
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Gotos
+nmap <silent> <Leader><Leader>d <Plug>(coc-definition)
+nmap <silent> <Leader><Leader>t <Plug>(coc-type-definition)
+nmap <silent> <Leader><Leader>i <Plug>(coc-implementation)
+nmap <silent> <Leader><Leader>r <Plug>(coc-references)
+
+" K shows documentation
+nnoremap <silent> K :call <SID>show_documentation<CR>
+function! s:show_documentation()
+  if (index(['vim', 'help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+endfunction
+
+
+" Highlight symbol under cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Rename current word
+nmap <Leader>rn <Plug>(coc-rename)
+
+augroup mygroup
+  autocmd!
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
 " Fugitive ***********************************************************************
-noremap <Leader>gs :Gstatus<cr>
-noremap <Leader>gd :Gvdiff<cr>
-noremap <Leader>g<S-k> :Gread<cr>
-noremap <Leader>g<S-u> :Gwrite<cr>
-noremap <Leader>gk :diffget<cr>
-noremap <Leader>gu :diffput<cr>
-noremap <Leader>gc :Gcommit<cr>
+" noremap <Leader>gs :Gstatus<cr>
+" noremap <Leader>gd :Gvdiff<cr>
+" noremap <Leader>g<S-k> :Gread<cr>
+" noremap <Leader>g<S-u> :Gwrite<cr>
+" noremap <Leader>gk :diffget<cr>
+" noremap <Leader>gu :diffput<cr>
+" noremap <Leader>gc :Gcommit<cr>
 
 " jedi-vim *****************************************************
 
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#completions_command = "<leader>c"
 let g:jedi#usages_command = "<leader>u"
+
+" Neomake
+" let g:neomake_sbt_maker = {
+"   \ 'exe': 'sbt',
+"   \ 'args': ['-Dsbt.log.noformat=true', 'compile'],
+"   \ 'append_file': 0,
+"   \ 'auto_enabled': 1,
+"   \ 'output_stream': 'stdout',
+"   \ 'errorformat':
+"     \ '%E[%trror]\ %f:%l:\ %m,' .
+"       \ '%-Z[error]\ %p^,' .
+"       \ '%-C%.%#,' .
+"       \ '%-G%.%#'
+"   \ }
+" let g:neomake_enabled_makers=['sbt']
+" let g:neomake_verbose=3
+" 
+" autocmd InsertLeave,TextChanged * update | Neomake! sbt

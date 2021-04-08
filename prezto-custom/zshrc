@@ -5,10 +5,13 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+source ${ZDOTDIR:-$HOME}/.zshenv
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" 
 fi
+
 
 # set up prompt
 autoload -Uz promptinit 
@@ -35,8 +38,3 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-# Pyenv
-# $(pyenv init -) breaks zsh -- these do the job
-
-export PATH=/Users/jperkelens/.pyenv/shims:${PATH} 
-export PYENV_SHELL=zsh 
