@@ -72,7 +72,7 @@ end
 task :configure_tmux do
   puts "Configuring Tmux"
   source = "#{ENV['PWD']}/tmux/tmux.conf"
-  unless File.exists? source
+  if File.exists? source
     puts "symlink #{source}"
     system %{ ln -s #{source} ~/.tmux.conf}
   end
