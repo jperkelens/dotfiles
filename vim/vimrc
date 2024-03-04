@@ -84,9 +84,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 
 
-" Python
-Plug 'davidhalter/jedi-vim'
-
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 
@@ -154,8 +151,8 @@ if has("win16") || has("win32")
 else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
-set wildignore+=**/node_modules/*,*.log,*.sock,**/lib-cov/**,**/dist,**/dags
-set wildignore+=*.png,*.gif,*.jpg,*.jpeg,*.class,nohup.out,*.swp
+set wildignore+=**/node_modules/*,*.log,*.sock,**/lib-cov/**,**/dist,**/db-data
+set wildignore+=*.png,*.gif,*.jpg,*.jpeg,*.class,nohup.out,*.swp,**/target
 set wildignore+=*.tmproj,*.pid,**/tmp/*,**/bower_components/*,**build,**/dependencies
 set wildmode=list:longest,full
 
@@ -553,7 +550,7 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMouseMode=1
 
 " Ignore
-let NERDTreeIgnore=['\.git','\.DS_Store','\.pdf','\.png','\.jpg','\.gif']
+let NERDTreeIgnore=['\.git','\.DS_Store','\.pdf','\.png','\.jpg','\.gif','**/target/*']
 
 " Quit on open
 let NERDTreeQuitOnOpen=1
@@ -661,6 +658,11 @@ nmap <silent> <Leader><Leader>d <Plug>(coc-definition)
 nmap <silent> <Leader><Leader>t <Plug>(coc-type-definition)
 nmap <silent> <Leader><Leader>i <Plug>(coc-implementation)
 nmap <silent> <Leader><Leader>r <Plug>(coc-references)
+
+" Codeaction
+nmap <silent> ga <Plug>(coc-codeaction-line)
+xmap <silent> ga <Plug>(coc-codeaction-selected)
+nmap <silent> gA <Plug>(coc-codeaction)
 
 " K shows documentation
 nnoremap <silent> K :call <SID>show_documentation<CR>
