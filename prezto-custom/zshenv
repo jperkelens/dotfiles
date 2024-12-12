@@ -14,29 +14,16 @@ export JAVA_HOME=${HOMEBREW_HOME}/opt/openjdk@11/bin
 export PATH=/Users/jperkelens/.pyenv/shims:${PATH} 
 export PYENV_SHELL=zsh 
 
-# Poetry
-export POETRY_HTTP_BASIC_PIP_BOY_USERNAME="__token__"
-export POETRY_HTTP_BASIC_PIP_BOY_PASSWORD="glpat-Fs-BCoMvJzsfHEjdLxh9"
-export POETRY_HTTP_BASIC_PYTHON_CONFIGURATION_USERNAME="__token__"
-export POETRY_HTTP_BASIC_PYTHON_CONFIGURATION_PASSWORD="glpat-Fs-BCoMvJzsfHEjdLxh9"
-
 # SBT GITLAB
 export CI_JOB_TOKEN="glpat-x6N_jCyeLZT9Duxo2RMG"
 
 # AWS 
-export AWS_PROFILE=dataeng-test
+export AWS_PROFILE=dev-shared
 export AWS_SDK_LOAD_CONFIG=1
-
-# Databricks
-export DATABRICKS_TOKEN=dapi1f9b7757b712b6555ca1338e97f57032
-export DATABRICKS_HOST="https://vindex-us-east-2-dev.cloud.databricks.com"
 
 # Delta / Hive
 export HIVE_SITE_DIR=~/.config/hive
 export HIVE_AUX_JARS_PATH=~/.config/hive
-
-# New Relic
-export NEW_RELIC_API_KEY="NRAK-U8COUUNXSLYL5TNDRXU0ZJ0C9W3"
 
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"

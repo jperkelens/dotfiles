@@ -54,7 +54,6 @@ task :setup_prezto do
     FileUtils.ln_s File.expand_path(f), File.expand_path("~/.#{file_name}"), :force => true
   end
   prompt_file = 'prompt_matt_setup'
-  puts "Symlink " + prompt_file
   FileUtils.ln_s File.expand_path("./prezto-custom/#{prompt_file}"),
     File.expand_path("~/.zprezto/modules/prompt/functions/#{prompt_file}"),
     :force => true

@@ -41,3 +41,37 @@ fi
 
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+
+# ASDF
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+
+# Added by SDXCLI setup script
+source /Users/jperkelens/Projects/smarterdx/common/sdxcli/bin/.sourceme
+
+
+# CODEARTIFACT_PYPI
+export CODEARTIFACT_DOMAIN_OWNER="166979434163"
+export CODEARTIFACT_DOMAIN_NAME="smarterdx"
+
+function codeartifact-auth() {
+    export CODEARTIFACT_TOKEN="$( \
+        aws codeartifact get-authorization-token \
+            --domain "${CODEARTIFACT_DOMAIN_NAME}" \
+            --domain-owner "${CODEARTIFACT_DOMAIN_OWNER}" \
+            --region us-east-1 \
+            --query authorizationToken \
+            --output text \
+    )"
+    export POETRY_HTTP_BASIC_PYTHON_PACKAGES_PASSWORD="${CODEARTIFACT_TOKEN}"
+    local REPO_URL="d.codeartifact.us-east-1.amazonaws.com/pypi/python-packages/simple"
+    local INDEX_URL="https://aws:$CODEARTIFACT_TOKEN@${CODEARTIFACT_DOMAIN_NAME}-${CODEARTIFACT_DOMAIN_OWNER}.${REPO_URL}"
+    export PIP_INDEX_URL="${INDEX_URL}"
+    export UV_INDEX_URL="${INDEX_URL}"
+    aws codeartifact login \
+        --tool npm \
+        --repository node-packages \
+        --domain "${CODEARTIFACT_DOMAIN_NAME}" \
+        --domain-owner "${CODEARTIFACT_DOMAIN_OWNER}"
+}
+
